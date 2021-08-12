@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const Lecturer_REST_API_URL='http://localhost:8080/admin/lecturers';
-const Student_REST_API_URL='http://localhost:8080/api/students';
-const Module_REST_API_URL='http://localhost:8080/api/modules';
-const Class_REST_API_URL='http://localhost:8080/api/classes';
+const Lecturer_REST_API_URL='http://localhost:8080/api/admin/lecturers';
+const Student_REST_API_URL='http://localhost:8080/api/admin/students';
+const Module_REST_API_URL='http://localhost:8080/api/admin/modules';
+const Class_REST_API_URL='http://localhost:8080/api/admin/classes';
 
 class AdminService{
     getLecturers(){
