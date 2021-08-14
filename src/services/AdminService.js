@@ -25,6 +25,26 @@ class AdminService{
     deleteLecturer(lecturerId){
         return axios.delete(Lecturer_REST_API_URL+'/'+lecturerId);
     }
+
+    getModules() {
+        return axios.get(Module_REST_API_URL);
+    }
+
+    getModuleById(moduleId) {
+        return axios.get(Module_REST_API_URL + "/" + moduleId);
+    }
+
+    addModule(module) {
+        return axios.post(Module_REST_API_URL, module);
+    }
+
+    updateModule(moduleId, module) {
+        return axios.put(Module_REST_API_URL + "/" + moduleId, module);
+    }
+
+    deleteModule(moduleId) {
+        return axios.delete(Module_REST_API_URL + "/" + moduleId);
+    }
 }
 
 export default new AdminService();
