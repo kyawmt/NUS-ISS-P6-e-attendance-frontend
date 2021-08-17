@@ -17,8 +17,8 @@ class HomeComponent extends Component {
                 <div className="col col-sm-1 d-flex justify-content-center">
                     </div>
                     <div className="col col-sm-3 d-flex justify-content-center"></div>
-                    <div className="col col-sm-4 d-flex justify-content-center">
-                    <p className="text-muted justify-content-center">saving your time spent on administration so that you can focus on the finer things</p>
+                    <div className="col col-sm-4 d-flex justify-content-center customMinWidth">
+                    <p className="text-muted justify-content-center">saving your time spent on administration <br/> so that you can focus on the finer things</p>
                     </div>
                     <div className="col col-sm-3 d-flex justify-content-center"></div>
                     <div className="col col-sm-1 d-flex justify-content-center"></div>

@@ -13,22 +13,22 @@ class LecturerMainPage extends Component {
         return (
             <div>
                 <div className="container">
-            <div className="row align-items-center mt-4">
-                <div className="col col-sm-3 d-flex justify-content-center">
+            <div className="row align-items-center mt-4 d-flex justify-content-center row-cols-3">
+                <div className="col col-lg-3 d-inline-flex justify-content-center m-1 customMinWidth">
                 <div className="card white darken-1">
-                <a href={ListTeachingSchedule} ><img src={TeachingSchedule} alt="TeachingSchedule"  height="200" width="200"/></a>
+                <a href={ListTeachingSchedule} className="v-align"><img src={TeachingSchedule} alt="TeachingSchedule"  className="img-fluid" height="200" width="200"/></a>
                 </div>
                 </div>
 
-                <div className="col col-sm-3 d-flex justify-content-center">
+                <div className="col col-lg-3 d-inline-flex justify-content-center m-1 customMinWidth">
                 <div className="card white darken-1">
-                <a href={ListClassStudentAttendance} ><img src={Attendance} alt="Modules"  height="200" width="200"/></a>
+                <a href={ListClassStudentAttendance} className="v-align"><img src={Attendance} alt="Attendance" className="img-fluid" height="200" width="200"/></a>
                 </div>
                 </div>
 
-                <div className="col col-sm-3 d-flex justify-content-center">
+                <div className="col col-lg-3 d-inline-flex justify-content-center m-1 customMinWidth">
                 <div className="card white darken-1">
-                <a href={ViewDashboard} ><img src={Dashboard} alt="ClassSchedule"  height="200" width="200"/></a>
+                <a href={ViewDashboard} className="v-align"><img src={Dashboard} alt="Dashboard" className="img-fluid" height="200" width="200"/></a>
                 </div>
                 </div>
 

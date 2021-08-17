@@ -92,3 +92,13 @@ transition:.3s;
 .no-underline {
   text-decoration: none !important;
 }
+
+.v-align {
+  vertical-align: middle !important;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.customMinWidth {
+  min-width: max-content;
+}
