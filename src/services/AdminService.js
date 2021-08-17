@@ -3,6 +3,9 @@ import axios from "axios";
 const Lecturer_REST_API_URL='http://localhost:8080/api/admin/lecturers';
 const Student_REST_API_URL='http://localhost:8080/api/admin/students';
 const Module_REST_API_URL='http://localhost:8080/api/admin/modules';
+const ModuleClasses_REST_API_URL='http://localhost:8080/api/admin/module-classes';
+const ClassStudents_REST_API_URL='http://localhost:8080/api/admin/module-classes-students';
+const ModuleClassInfo_REST_API_URL='http://localhost:8080/api/admin/module-classes-info';
 const Class_REST_API_URL='http://localhost:8080/api/admin/classes';
 
 class AdminService{
@@ -44,6 +47,18 @@ class AdminService{
 
     deleteModule(moduleId) {
         return axios.delete(Module_REST_API_URL + "/" + moduleId);
+    }
+
+    getClassByModuleId(moduleId){
+        return axios.get(ModuleClasses_REST_API_URL+'/'+moduleId);
+    }
+
+    getStudentsByClassId(classId){
+        return axios.get(ClassStudents_REST_API_URL+'/'+classId);
+    }
+
+    getClassInfoByClassId(classId){
+        return axios.get(ModuleClassInfo_REST_API_URL+'/'+classId);
     }
 }
 

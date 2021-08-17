@@ -32,11 +32,11 @@ class ListModule extends Component {
     }
 
     addModule() {
-        this.props.history.push("/add-Module/-1");
+        this.props.history.push("/admin/add-Module/-1");
     }
 
     editModule(id) {
-        this.props.history.push(`/add-Module/${id}`);
+        this.props.history.push(`/admin/add-Module/${id}`);
     }
 
     deleteModule(id) {

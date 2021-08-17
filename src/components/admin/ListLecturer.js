@@ -21,7 +21,7 @@ class ListLecturer extends React.Component{
     }
 
     editLecturer(id){
-        this.props.history.push(`/add-lecturer/${id}`);
+        this.props.history.push(`/admin/add-lecturer/${id}`);
     }
 
     componentDidMount(){
@@ -31,7 +31,7 @@ class ListLecturer extends React.Component{
     }
 
     addLecturer(){
-        this.props.history.push('/add-lecturer/-1');
+        this.props.history.push('/admin/add-lecturer/-1');
     }
 
     render(){

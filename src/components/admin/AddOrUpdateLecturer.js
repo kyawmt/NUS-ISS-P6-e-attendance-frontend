@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AdminService from '../../services/AdminService';
 
-class AddOrUpdateLecturerComponent extends Component {
+class AddOrUpdateLecturer extends Component {
     
     constructor(props){
         super(props)
@@ -52,11 +52,11 @@ class AddOrUpdateLecturerComponent extends Component {
         // update: step 5
         if(this.state.id==-1){
             AdminService.addLecturer(lecturer).then(res=>{
-                this.props.history.push('/lecturers');
+                this.props.history.push('/admin/lecturers');
             }); 
         }else{
             AdminService.updateLecturer(lecturer,this.state.id).then(res =>{
-                this.props.history.push('/lecturers');
+                this.props.history.push('/admin/lecturers');
             });
         }
     }
@@ -72,7 +72,7 @@ class AddOrUpdateLecturerComponent extends Component {
     }
 
     cancel(){
-        this.props.history.push('/lecturers');
+        this.props.history.push('/admin/lecturers');
     }
 
     // update: step 6
@@ -125,4 +125,4 @@ class AddOrUpdateLecturerComponent extends Component {
     }
 }
 
-export default AddOrUpdateLecturerComponent;
+export default AddOrUpdateLecturer;

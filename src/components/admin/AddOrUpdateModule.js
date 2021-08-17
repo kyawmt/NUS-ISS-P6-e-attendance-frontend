@@ -116,19 +116,19 @@ class AddOrUpdateModule extends Component {
         
             if(this.state.id == -1) {
                 AdminService.addModule(module).then(
-                    reponse => this.props.history.push('/module')
+                    reponse => this.props.history.push('/admin/module')
                 )
             }
             else {
                 AdminService.updateModule(this.state.id, module).then(
-                    reponse => this.props.history.push('/module')
+                    reponse => this.props.history.push('/admin/module')
                 )
             }
         }
     }
 
     cancel() {
-        this.props.history.push('/module')
+        this.props.history.push('/admin/module')
     }
 
     render() {
