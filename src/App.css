@@ -67,3 +67,28 @@ height:200px;
 width:200px;
 transition:.3s;
 }
+
+.btn-toolbar {
+  width: 150px;
+  height: 50px;
+  color: white !important;
+  font-weight: bolder !important;
+  transition: 2s;
+  font-size: x-large !important;
+  text-transform: none !important;
+  vertical-align: middle !important;
+  background-color: #E94388 !important;
+}
+
+.btn-toolbar:hover {
+  background-color: #F3AD5E !important;
+  color: #132B42 !important;
+}
+
+.custom-col {
+  height: 50px !important;
+}
+
+.no-underline {
+  text-decoration: none !important;
+}
