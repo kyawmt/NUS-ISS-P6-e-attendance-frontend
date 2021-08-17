@@ -9,6 +9,7 @@ import AddOrUpdateLecturerComponent from './components/admin/AddOrUpdateLecturer
 import ListModule from './components/admin/ListModule';
 import addOrUpdateModule from './components/admin/AddOrUpdateModule'
 import AdminMainPageComponent from './components/admin/AdminMainPageComponent';
+import LecturerMainPage from './components/lecturer/LecturerMainPage';
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
             <Switch> 
               <Route path="/" exact component={ListLecturer}></Route>
               <Route path="/lecturers" component={ListLecturer}></Route>
-              
+              <Route path="/lecturer" component={LecturerMainPage}></Route>
               <Route path="/add-lecturer/:id" component={AddOrUpdateLecturerComponent}></Route>
               <Route path="/admin" component={AdminMainPageComponent}></Route>
               <Route path="/login" component={LoginComponent}></Route>
