@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #132B42;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -49,4 +49,21 @@
 
 .particles-js{
   position: fixed;
+}
+
+.header-navbar {
+  background-color: #132B42;
+  padding: 20px;
+}
+
+.card:hover{
+  box-shadow: 4px 4px 4px #132B42;
+  transform:scale(1.1);
+  cursor: pointer;
+}
+
+.card{
+height:200px;
+width:200px;
+transition:.3s;
 }
