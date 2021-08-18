@@ -16,6 +16,7 @@
     "react-qr-code": "^2.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "recharts": "^2.1.0",
     "tsparticles": "^1.33.3",
     "web-vitals": "^1.1.2"
   },

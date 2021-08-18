@@ -1,0 +1,21 @@
+.sidebar{
+    flex: 1;
+    height: calc(100vh - 50px);
+    position: sticky;
+    background-color: rgb(252, 252, 252);
+}
+
+.classesTitle{
+    text-align: center;
+    font-size: 18px;
+}
+
+.classes{
+    padding: 20px
+}
+
+.classList{
+    list-style: none;
+    padding: 5px;
+
+}

@@ -1,0 +1,36 @@
+.allFeatures{
+    flex: 4;
+}
+
+.featured{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.featuredItem{
+    flex: 1;
+    margin: 0px 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+}
+
+.graph{
+    margin: 20px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+    flex-grow: 1;
+}
+
+.graphTitle{
+    margin-bottom: 0px 20px;
+    padding: 20px;
+}
+
+.allGraphs{
+    width: 100%;
+    display: flex;
+    justify-content:stretch;
+}
+

@@ -18,6 +18,8 @@ import ListStudentsLeave from './components/admin/ListStudentsLeave';
 import ListModuleAttendence from './components/admin/ListModuleAttendance';
 import ViewModuleStudentAttendance from './components/admin/ViewModuleStudentAttendance';
 import ViewModuleAttendence from './components/admin/ViewModuleAttendance';
+import addOrUpdateModule from './components/admin/AddOrUpdateModule'
+import ViewDashboard from './components/lecturer/ViewDashboard';
 
 
 function App() {
@@ -48,6 +50,9 @@ function App() {
               <Route path="/admin/Class" component={ListClass}></Route>
               <Route path="/admin/student-leave-application" component={ListStudentsLeave}></Route>
               
+              <Route path="/module" component={ListModule}></Route>
+              <Route path="/add-Module/:id" component={addOrUpdateModule}></Route>
+              <Route path="/lecturerDashboard" component={ViewDashboard}></Route>
             </Switch>
           </div>
           <FooterComponent/>

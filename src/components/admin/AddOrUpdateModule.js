@@ -106,10 +106,10 @@ class AddOrUpdateModule extends Component {
         event.preventDefault();
 
         const isValid = this.formValidation();
-        console.log(isValid);
-        console.log(this.state.codeError);
-        console.log(this.state.nameError);
-        console.log(this.state.minAttendanceError);
+        // console.log(isValid);
+        // console.log(this.state.codeError);
+        // console.log(this.state.nameError);
+        // console.log(this.state.minAttendanceError);
 
         if(isValid) {
             let module = {code: this.state.code, name: this.state.name, minAttendance: this.state.minAttendance};
@@ -143,19 +143,22 @@ class AddOrUpdateModule extends Component {
                                     <div className= "form-group">
                                         <label>Module Code:</label>
                                         <input className= "form-control" type="text" name="code"
-                                        value={this.state.code} onChange={this.handleChange}/>
+                                        value={this.state.code} onChange={this.handleChange}
+                                        style= {{ border: this.state.codeError !== "" ? '0.5px solid red' : ''}}/>
                                     </div>
                                     <div style={{fontSize: 10, color: "red"}}>{this.state.codeError}</div>
                                     <div className= "form-group">
                                         <label>Module Name:</label>
                                         <input className= "form-control" type="text" name="name"
-                                        value={this.state.name} onChange={this.handleChange}/>
+                                        value={this.state.name} onChange={this.handleChange}
+                                        style= {{ border: this.state.nameError !== "" ? '0.5px solid red' : ''}}/>
                                     </div>
                                     <div style={{fontSize: 10, color: "red"}}>{this.state.nameError}</div>
                                     <div className= "form-group">
                                         <label>Minimum Attendance (in %):</label>
                                         <input className= "form-control" type="number" name="minAttendance" 
-                                        value={this.state.minAttendance} onChange={this.handleChange}/>
+                                        value={this.state.minAttendance} onChange={this.handleChange} 
+                                        style= {{ border: this.state.minAttendanceError !== "" ? '0.5px solid red' : ''}}/>
                                     </div>
                                     <div style={{fontSize: 10, color: "red"}}>{this.state.minAttendanceError}</div>
                                     <div style={{marginTop: '5px'}}>
