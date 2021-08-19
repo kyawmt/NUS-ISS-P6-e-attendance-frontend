@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #132B42;
+  background-color: #132b42;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -37,7 +37,7 @@
   }
 }
 
-.footer{
+.footer {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -47,16 +47,16 @@
   color: white;
 }
 
-.particles-js{
+.particles-js {
   position: fixed;
 }
 
 .header-navbar {
-  background-color: #132B42;
+  background-color: #132b42;
   padding: 20px;
 }
 
-.card:hover{
+/* .card:hover{
   box-shadow: 4px 4px 4px #132B42;
   transform:scale(1.1);
   cursor: pointer;
@@ -66,6 +66,18 @@
 height:200px;
 width:200px;
 transition:.3s;
+} */
+
+.card.icon:hover {
+  box-shadow: 4px 4px 4px #132b42;
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.card.icon {
+  height: 200px;
+  width: 200px;
+  transition: 0.3s;
 }
 
 .btn-toolbar {
@@ -77,12 +89,12 @@ transition:.3s;
   font-size: x-large !important;
   text-transform: none !important;
   vertical-align: middle !important;
-  background-color: #E94388 !important;
+  background-color: #e94388 !important;
 }
 
 .btn-toolbar:hover {
-  background-color: #F3AD5E !important;
-  color: #132B42 !important;
+  background-color: #f3ad5e !important;
+  color: #132b42 !important;
 }
 
 .custom-col {
