@@ -21,6 +21,8 @@ import ViewModuleAttendence from './components/admin/ViewModuleAttendance';
 import addOrUpdateModule from './components/admin/AddOrUpdateModule'
 import ViewDashboard from './components/lecturer/ViewDashboard';
 
+import ListTeachingSchedule from './components/lecturer/ListTeachingSchedule';
+import ViewClassQRCode from './components/lecturer/ViewClassQRCode';
 
 function App() {
   return (
@@ -49,6 +51,10 @@ function App() {
               <Route path="/admin/class-schedule" component={ListClassSchedule}></Route>
               <Route path="/admin/Class" component={ListClass}></Route>
               <Route path="/admin/student-leave-application" component={ListStudentsLeave}></Route>
+
+
+              <Route path="/lecturer/schedules" component={ListTeachingSchedule}></Route>
+              <Route path="/lecturer/qrcode/:id/:option" component={ViewClassQRCode}></Route>
               
               <Route path="/module" component={ListModule}></Route>
               <Route path="/add-Module/:id" component={addOrUpdateModule}></Route>
