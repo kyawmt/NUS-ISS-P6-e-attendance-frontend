@@ -19,6 +19,7 @@ import ListModuleAttendence from "./components/admin/ListModuleAttendance";
 import ViewModuleStudentAttendance from "./components/admin/ViewModuleStudentAttendance";
 import ViewModuleAttendence from "./components/admin/ViewModuleAttendance";
 import AddClassSchedule from "./components/admin/AddClassSchedule";
+import ListClassStudentAttendance from "./components/lecturer/ListClassStudentAttendence";
 
 function App() {
   return (
@@ -74,6 +75,7 @@ function App() {
               path="/admin/student-leave-application"
               component={ListStudentsLeave}
             ></Route>
+            <Route path = "/lecturer/attendance/:id" component = {ListClassStudentAttendance}/>
           </Switch>
         </div>
         <FooterComponent />
