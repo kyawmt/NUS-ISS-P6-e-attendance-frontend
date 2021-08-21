@@ -34,3 +34,17 @@
     justify-content:stretch;
 }
 
+.pass{
+    background-color: #77DD77;
+    margin-left: 20px;
+    border-radius: 8px;
+    border: none;
+}
+
+.fail{
+    background-color: #FA8072;
+    margin-left: 10px;
+    border-radius: 8px;
+    border: none;
+}
+

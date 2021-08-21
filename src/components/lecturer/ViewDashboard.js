@@ -5,11 +5,28 @@ import FeaturesDashboard from './FeaturesDashboard';
 
 
 class ViewDashboard extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            classId: 0
+        }
+
+        this.handleSelectClassId = this.handleSelectClassId.bind(this);
+    }
+
+    handleSelectClassId = (id) => {
+        this.setState({
+            classId: id
+        })
+        console.log(this.state.classId);
+    }
+
     render() {
         return (   
             <div className="containers">
-                <Sidebar />
-                <FeaturesDashboard/>
+                <Sidebar onSelectClassId = {this.handleSelectClassId}/>
+                <FeaturesDashboard selectedClassId = {this.state.classId} />
             </div>
         );
     }

@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const Lecturer_Schedules_REST_API_URL='http://localhost:8080/api/lecturer/schedules';
+const Class_REST_API_URL='http://localhost:8080/api/lecturer';
 
 class LecturerService{
 
@@ -29,6 +30,17 @@ class LecturerService{
         return axios.get(Lecturer_Schedules_REST_API_URL+'/attendance/'+scheduleId+'/'+option);
     }
 
+    getClassById(lecturerId){
+        return axios.get(Class_REST_API_URL+'/classes/'+lecturerId);
+    }
+
+    getClassByClassId(classId){
+        return axios.get(Class_REST_API_URL+'/class/'+classId);
+    }
+
+    getAttendanceByClassId(classId){
+        return axios.get(Class_REST_API_URL+'/classDates/'+classId);
+    }
 }
 
 export default new LecturerService();
