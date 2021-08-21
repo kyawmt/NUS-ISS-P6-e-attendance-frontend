@@ -8,6 +8,15 @@ class LecturerService{
         return axios.get(Lecturer_Schedules_REST_API_URL);
     }
 
+    getLecturerTodaySchedule(){
+        return axios.get(Lecturer_Schedules_REST_API_URL+'/'+'todaySchedule');
+    }
+
+    getSchedulesByRange(startDateinMs, endDateinMs){
+        console.log(startDateinMs);
+        return axios.get(Lecturer_Schedules_REST_API_URL+'/'+ 'schedulesByRange/'+ startDateinMs + '/' + endDateinMs);
+    }
+
     getSchedulebyId(scheduleId){
         return axios.get(Lecturer_Schedules_REST_API_URL+'/'+scheduleId);
     }
