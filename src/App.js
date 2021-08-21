@@ -40,7 +40,7 @@ function App() {
               <Route path="/admin/add-lecturer/:id" component={AddOrUpdateLecturer}></Route>
               <Route path="/admin/ListStudent" component={ListStudent}></Route>
 
-              <Route path="/admin/module" component={ListModule}></Route>
+              <Route path="/admin/ListModule" component={ListModule}></Route>
               <Route path="/admin/add-Module/:id" component={AddOrUpdateModule}></Route>
               <Route path="/admin/module-attendance" component={ListModuleAttendence}></Route>
               <Route path="/admin/module-classes-attendance/:id" component={ViewModuleAttendence}></Route>
