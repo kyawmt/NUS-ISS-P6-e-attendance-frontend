@@ -23,6 +23,7 @@ import ViewDashboard from './components/lecturer/ViewDashboard';
 
 import ListTeachingSchedule from './components/lecturer/ListTeachingSchedule';
 import ViewClassQRCode from './components/lecturer/ViewClassQRCode';
+import ListClassStudentAttendance from './components/lecturer/ListClassStudentAttendence';
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
 
               <Route path="/lecturer/schedules" component={ListTeachingSchedule}></Route>
               <Route path="/lecturer/qrcode/:id/:option" component={ViewClassQRCode}></Route>
+              <Route path="/lecturer/overview/:id" component={ListClassStudentAttendance}></Route>
               
             </Switch>
           </div>
