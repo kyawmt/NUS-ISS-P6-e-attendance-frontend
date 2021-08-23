@@ -56,6 +56,10 @@ class LecturerService{
     getListofSchedule(){
         return axios.get(LECTURER_REST_API_URL+'/class/schedules')
     }
+
+    getNameandDate(id){
+        return axios.get(LECTURER_REST_API_URL+'/schedule'+id)
+    }
 }
 
 export default new LecturerService();

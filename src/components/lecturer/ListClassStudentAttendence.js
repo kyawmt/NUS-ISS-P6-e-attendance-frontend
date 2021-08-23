@@ -2,7 +2,8 @@ import React from 'react';
 import TabNav from './TabNav';
 import Tab from "./Tab";
 import LecturerService from '../../services/LecturerService';
-import {PieChart, Pie} from 'recharts';
+import {Pie} from 'react-chartjs-2';
+import { Button } from 'bootstrap';
 
 
 
@@ -16,7 +17,10 @@ class ListClassStudentAttendance extends React.Component{
             present:[],
             schedules: [],
             overview: [],
-            value : 0
+            value : 0,
+            names: [],
+            date:"",
+            moduleName:""
             
         }
         this.getOverviewFromSelection = this.getOverviewFromSelection.bind(this);
@@ -43,12 +47,19 @@ class ListClassStudentAttendance extends React.Component{
             this.setState({overview:response.data})
         })
 
+        LecturerService.getNameandDate(id).then((response) =>{
+            this.setState({names:response.data})
+        })
+
         this.state.value = {id}
+
+        
         
     }
     getOverviewFromSelection(id){
-        this.props.history.push(`/lecturer/attendance/${id}`)
+        this.props.history.push(`/lecturer/overview/${id}`)
     }
+
     
 
     setSelected = (tab) =>{
@@ -63,6 +74,10 @@ class ListClassStudentAttendance extends React.Component{
         this.props.history.push(`/lecturer/overview/`+this.state.value)
     }
 
+   
+
+    
+
  
 
     render(){
@@ -73,29 +88,69 @@ class ListClassStudentAttendance extends React.Component{
             {name: 'Absent With Valid Reason', value: this.state.overview.AbsentwithvalidReason}
         ];
 
+        const absentwithreason = this.state.overview.AbsentwithvalidReason;
+        const absentwovalidreason = this.state.overview.AbsentwithoutvalidReason;
         const absentee =this.state.overview.AbsentwithoutvalidReason+this.state.overview.AbsentwithvalidReason;
         const present = this.state.overview.Present;
 
+        const date = this.state.names.scheduleDate;
+        const name = this.state.names.moduleName;    
+        const state = {
+            labels: ['Absent With Valid Reason','Absent Without Valid Reason','Present'],
+            datasets: [
+              {
+                label: 'Attendance Overview',
+                backgroundColor: [
+                  '#B21F00',
+                  '#C9DE00',
+                  '#2FDE00'
+                ],
+                hoverBackgroundColor: [
+                '#501800',
+                '#4B5000',
+                '#175000'
+                ],
+                data: [absentwithreason,absentwovalidreason,present]
+              }
+            ]
+        }
+        
+
         return (
             <div> 
+                <p> The attendance rate for {name} on {date} </p> 
+               
+                
                 <form onSubmit = {this.handleSubmit}>
         
-                <select value = {this.state.value} onChange={this.handleChange}>
+                <select value = {this.state.value} onChange={this.handleChange}> <option> Please select a schedule </option>
                             {this.state.schedules.map(s => <option value = {s.id}>
                          {s._class.module.name} {s.date}
                         </option>)}
-                        </select > 
-                        
+                        </select >                    
                         <input type="submit" value = "Submit"/> 
-                        </form>            
-            <div className ="App mt-4">
+                        </form>    
+
+            <div>
                 <TabNav tabs = {['Overview','Present','Absent']} selected={this.state.selected} setSelected={this.setSelected}>
                     <Tab isSelected={this.state.selected === 'Overview'}>
-                        <PieChart width={400} height={400}>
-                            <Pie data={data} dataKey="value" cx={200} cy={220} outerRadius={150} fill="#8884d8" label="name"/>
-                        </PieChart>  
-                        <p>Number of Student Absent: {absentee} </p> 
-                        <p>Number of Student Present: {present} </p>                      
+                     <Pie                        
+                        data={state}
+                        width= {400}
+                        height = {400}
+                        options={{
+                            maintainAspectRatio: false,
+                            title:{
+                            display:true,
+                            text:'Overview of Attendance',
+                            fontSize:20
+                            },
+                        legend:{
+                            display:true,
+                            position:'left'
+                            }
+                        }}
+                         />              
                     </Tab>
                     <Tab isSelected={this.state.selected === 'Present'}>
                         <p> </p>
@@ -156,13 +211,17 @@ class ListClassStudentAttendance extends React.Component{
                     </tbody>
                 </table>
 
+                
+
                     </Tab>
+      
 
                 </TabNav>
+                <button
+                className="btn btn-default"> Back </button>
 
+            </div>            
             </div>
-            </div>
-
         );
     }
 } 
