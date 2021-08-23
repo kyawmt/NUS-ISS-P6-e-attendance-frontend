@@ -55,7 +55,7 @@ class ListTeachingSchedule extends Component {
     render() {
         return (
             <div>
-                <h1 className="text-center">Class Schedules</h1>
+                <h1 className="text-left">Teaching Schedule</h1>
 
                 <br></br>
 

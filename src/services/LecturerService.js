@@ -1,4 +1,5 @@
 import axios from "axios";
+import axiosInstance from "./axiosInstance";
 
 const Lecturer_Schedules_REST_API_URL='http://localhost:8080/api/lecturer/schedules';
 const Class_REST_API_URL='http://localhost:8080/api/lecturer';
@@ -11,24 +12,24 @@ class LecturerService{
     }
 
     getLecturerTodaySchedule(){
-        return axios.get(Lecturer_Schedules_REST_API_URL+'/'+'todaySchedule');
+        return axiosInstance.get(Lecturer_Schedules_REST_API_URL+'/'+'todaySchedule');
     }
 
     getSchedulesByRange(startDateinMs, endDateinMs){
-        console.log(startDateinMs);
-        return axios.get(Lecturer_Schedules_REST_API_URL+'/'+ 'schedulesByRange/'+ startDateinMs + '/' + endDateinMs);
+        
+        return axiosInstance.get(Lecturer_Schedules_REST_API_URL+'/'+ 'schedulesByRange/'+ startDateinMs + '/' + endDateinMs);
     }
 
     getSchedulebyId(scheduleId){
-        return axios.get(Lecturer_Schedules_REST_API_URL+'/'+scheduleId);
+        return axiosInstance.get(Lecturer_Schedules_REST_API_URL+'/'+scheduleId);
     }
 
     getQRCodeData(scheduleId, option){
-        return axios.get(Lecturer_Schedules_REST_API_URL+'/qrcode/'+scheduleId+'/'+option);
+        return axiosInstance.get(Lecturer_Schedules_REST_API_URL+'/qrcode/'+scheduleId+'/'+option);
     }
 
     getScheduleAttendance(scheduleId, option){
-        return axios.get(Lecturer_Schedules_REST_API_URL+'/attendance/'+scheduleId+'/'+option);
+        return axiosInstance.get(Lecturer_Schedules_REST_API_URL+'/attendance/'+scheduleId+'/'+option);
     }
 
     getClassById(lecturerId){
