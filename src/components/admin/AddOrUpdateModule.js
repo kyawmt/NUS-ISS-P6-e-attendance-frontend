@@ -25,16 +25,9 @@ class AddOrUpdateModule extends Component {
 
     componentDidMount() {
 
-        AdminService.getModules().then(
-            response => {
-                this.setState({modules: response.data})               
-            }
-        )
-
-        if(this.state.id === -1) {
+        if(this.state.id == -1) {
             return;
-        }
-        else {
+        } else {
             AdminService.getModuleById(this.state.id).then(
                 response => {
                     let module = response.data;
@@ -116,19 +109,19 @@ class AddOrUpdateModule extends Component {
         
             if(this.state.id == -1) {
                 AdminService.addModule(module).then(
-                    reponse => this.props.history.push('/admin/module')
+                    reponse => this.props.history.push('/admin/ListModule')
                 )
             }
             else {
                 AdminService.updateModule(this.state.id, module).then(
-                    reponse => this.props.history.push('/admin/module')
+                    reponse => this.props.history.push('/admin/ListModule')
                 )
             }
         }
     }
 
     cancel() {
-        this.props.history.push('/admin/module')
+        this.props.history.push('/admin/ListModule')
     }
 
     render() {

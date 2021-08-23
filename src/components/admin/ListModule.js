@@ -40,11 +40,11 @@ class ListModule extends Component {
     }
 
     deleteModule(id) {
-        AdminService.deleteModule(id).then(
+        AdminService.deleteModule(id).then(res=>{
             this.setState({
                 modules: this.state.modules.filter(module => module.id !== id)
-            })
-        )
+            })}
+        );
     }
 
     handlePageClick = (event) => {

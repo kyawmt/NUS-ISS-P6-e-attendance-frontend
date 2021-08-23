@@ -16,7 +16,7 @@ class AdminMainPageComponent extends Component {
             <div className="row align-items-center mt-4 d-inline-flex justify-content-center row-cols-3">
                 <div className="col col-lg-3 d-inline-flex justify-content-center m-1 customMinWidth">
                 <div className="card white darken-1">
-                <a href={"./ListStudent"} className="v-align"><img src={Accounts} alt="Accounts" className="img-fluid" height="200" width="200"/></a>
+                <a href={"./students"} className="v-align"><img src={Accounts} alt="Accounts" className="img-fluid" height="200" width="200"/></a>
                 </div>
                 </div>
 

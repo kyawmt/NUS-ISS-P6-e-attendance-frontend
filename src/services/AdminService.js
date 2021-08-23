@@ -1,4 +1,3 @@
-import axios from "axios";
 import axiosInstance from "./axiosInstance";
 
 const Lecturer_REST_API_URL = 'http://localhost:8080/api/admin/lecturers';
@@ -9,6 +8,7 @@ const ClassStudents_REST_API_URL = 'http://localhost:8080/api/admin/module-class
 const ModuleClassInfo_REST_API_URL = 'http://localhost:8080/api/admin/module-classes-info';
 const Class_REST_API_URL = 'http://localhost:8080/api/admin/classes';
 const ClassSchedule_REST_API_URL = "http://localhost:8080/api/admin/schedules";
+const AcademicPeriod_REST_API_URL = "http://localhost:8080/api/admin/academicPeriod";
 
 class AdminService {
 
@@ -101,6 +101,22 @@ class AdminService {
     }
 
     addSchedule(schedule) {
+        return axiosInstance.post(ClassSchedule_REST_API_URL, schedule);
+    }
+
+    getAcademicPeriods() {
+        return axiosInstance.get(AcademicPeriod_REST_API_URL);
+    }
+
+    getClasses() {
+        return axiosInstance.get(Class_REST_API_URL);
+    }
+
+    deleteClass(classId) {
+        return axiosInstance.delete(Class_REST_API_URL + "/" + classId);
+    }
+
+    addSchedules(schedule) {
         return axiosInstance.post(ClassSchedule_REST_API_URL, schedule);
     }
 }

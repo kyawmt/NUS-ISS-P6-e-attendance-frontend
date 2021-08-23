@@ -37,6 +37,7 @@ class LoginComponent extends Component {
 
             sessionStorage.setItem('token', token);
             sessionStorage.setItem('fullname', fullname);
+            sessionStorage.setItem('role', role);
 
             switch (role) {
                 case "admin":

@@ -1,24 +1,25 @@
 import React, { Component } from "react";
 import AdminService from "../../services/AdminService";
-import axiosInstance from "../../services/axiosInstance";
 class AddClassSchedule extends Component {
     constructor() {
         super();
         this.state = {
             lecturers: [],
             modules: [],
+            academicPeriods: [],
             lecturer: "",
             module: "",
-            year: "",
-            semester: "",
+            academicPeriod: "",
             classsize: "",
-            days: [{
+            days: {
                 Monday: false,
                 Tuesday: false,
                 Wednesday: false,
                 Thursday: false,
-                Friday: false
-            }],
+                Friday: false,
+                Saturday: false,
+                Sunday: false
+            },
         };
     }
 
@@ -30,19 +31,15 @@ class AddClassSchedule extends Component {
         this.setState({ module: event.target.value });
     }
 
-    changeYearHandler = (event) => {
-        this.setState({ year: event.target.value });
-    }
-
-    changeSemesterHandler = (event) => {
-        this.setState({ semester: event.target.value });
+    changeAcademicPeriodHandler = (event) => {
+        this.setState({ academicPeriod: event.target.value });
     }
 
     changeClasssizeHandler = (event) => {
         this.setState({ classsize: event.target.value });
     }
 
-    ChangeMondayHandler(event) {
+    ChangeMondayHandler = (event) => {
         this.setState(function (prevState) {
             return {
                 days: {
@@ -53,7 +50,7 @@ class AddClassSchedule extends Component {
         });
     }
 
-    ChangeTuesdayHandler(event) {
+    ChangeTuesdayHandler = (event) => {
         this.setState(function (prevState) {
             return {
                 days: {
@@ -64,7 +61,7 @@ class AddClassSchedule extends Component {
         });
     }
 
-    ChangeWednesdayHandler(event) {
+    ChangeWednesdayHandler = (event) => {
         this.setState(function (prevState) {
             return {
                 days: {
@@ -75,7 +72,7 @@ class AddClassSchedule extends Component {
         });
     }
 
-    ChangeThursdayHandler(event) {
+    ChangeThursdayHandler = (event) => {
         this.setState(function (prevState) {
             return {
                 days: {
@@ -86,7 +83,7 @@ class AddClassSchedule extends Component {
         });
     }
 
-    ChangeFridayHandler(event) {
+    ChangeFridayHandler = (event) => {
 
         this.setState(function (prevState) {
             return {
@@ -98,30 +95,24 @@ class AddClassSchedule extends Component {
         });
     }
 
-    saveSchedule=(e)=>{
+    saveSchedule = (e) => {
         e.preventDefault();
 
-        let schedule={
-            lecturer:this.state.lecturer,
-            module:this.state.module, 
-            year:this.state.year,
-            semester:this.state.semester,
-            classsize:this.state.classsize,
-            days:this.state.days
+        let schedule = {
+            lecturer: this.state.lecturer,
+            module: this.state.module,
+            academicPeriod: this.state.academicPeriod,
+            classsize: this.state.classsize,
+            days: this.state.days
         };
-        AdminService.addSchedules( schedule).then(response => {
-                console.log(response.data);
-                this.setState({
-                    message: "The schedule was updated successfully!"
-                });
-            })
-            .catch(e => {
-                console.log(e);
-            });
+
+        AdminService.addSchedules(schedule).then(res=>{
+            this.props.history.push('/admin/ListClassSchedule');
+        });
     }
 
     cancel() {
-        this.props.history.push("/admin/class-schedule");
+        this.props.history.push("/admin/ListClassSchedule");
     }
 
     componentDidMount() {
@@ -131,6 +122,10 @@ class AddClassSchedule extends Component {
 
         AdminService.getModules().then((res) => {
             this.setState({ modules: res.data })
+        });
+
+        AdminService.getAcademicPeriods().then((res) => {
+            this.setState({ academicPeriods: res.data })
         });
     }
 
@@ -147,11 +142,12 @@ class AddClassSchedule extends Component {
                                 <form>
                                     <div className="form-group">
                                         <label>Lecturer Name: </label>
-                                        <select className="custom-select" id="lastName">
+                                        <select value={this.state.lecturer} className="custom-select" id="lastName"
+                                            onChange={this.changeLecturerHandler}>
+                                            <option selected="selected" disabled="disabled" value=''>select a lecturer</option>
                                             {this.state.lecturers.map(item => (
                                                 <option key={item.id}
-                                                    value={item.id}
-                                                    onChange={this.changeLecturerHandler}>
+                                                    value={item.id}>
                                                     {item.firstName + " " + item.lastName}
                                                 </option>
                                             ))}
@@ -162,38 +158,36 @@ class AddClassSchedule extends Component {
                                 <form>
                                     <div className="form-group">
                                         <label>Module Code: </label>&nbsp;
-                                        <select className="custom-select" id="lastName">
+                                        <select value={this.state.module} className="custom-select" id="lastName"
+                                            onChange={this.changeModuleHandler}>
+                                            <option selected="selected" disabled="disabled" value=''>select a module</option>
                                             {this.state.modules.map((item) => (
                                                 <option key={item.id}
-                                                    value={item.id}
-                                                    onChange={this.changeModuleHandler}>
-                                                    {item.code}
+                                                    value={item.id}>
+                                                    {item.code + " " + item.name}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                </form>
+                                <p></p>
+                                <form>
+                                    <div className="form-group">
+                                        <label>Academic Period: </label>&nbsp;
+                                        <select value={this.state.academicPeriod} className="custom-select" id="lastName"
+                                            onChange={this.changeAcademicPeriodHandler}>
+                                            <option selected="selected" disabled="disabled" value=''>select an academicPeriod</option>
+                                            {this.state.academicPeriods.map((item) => (
+                                                <option key={item.id}
+                                                    value={item.id}>
+                                                    {item.year + " " + item.semester}
                                                 </option>
                                             ))}
                                         </select>
                                     </div>
                                 </form>
                             </div>
-                            <div className="form-group" style={{ marginTop: "10px" }}>
-                                <label>Academic Year: </label>
-                                <input
-                                    placeholder="Enter Academic Year"
-                                    name="acadYear"
-                                    className="form-control"
-                                    value={this.state.year}
-                                    onChange={this.changeYearHandler}
-                                />
-                            </div>
-                            <div className="form-group" style={{ marginTop: "10px" }}>
-                                <label>Semester: </label>
-                                <input
-                                    placeholder="Enter Semester"
-                                    name="semester"
-                                    className="form-control"
-                                    value={this.state.semester}
-                                    onChange={this.changeSemesterHandler}
-                                />
-                            </div>
+
                             <div className="form-group" style={{ marginTop: "10px" }}>
                                 <label>Class Size: </label>
                                 <input
@@ -209,31 +203,31 @@ class AddClassSchedule extends Component {
                                 <form>
                                     <input type="checkbox"
                                         checked={this.state.days.Monday}
-                                        onChange={this.handleChange}
+                                        onChange={this.ChangeMondayHandler}
                                     />{" "}
                                     Mon &nbsp;
                                     <input
                                         type="checkbox"
                                         checked={this.state.days.Tuesday}
-                                        onChange={this.handleChange}
+                                        onChange={this.ChangeTuesdayHandler}
                                     />{" "}
                                     Tue &nbsp;
                                     <input
                                         type="checkbox"
                                         checked={this.state.days.Wednesday}
-                                        onChange={this.handleChange}
+                                        onChange={this.ChangeWednesdayHandler}
                                     />{" "}
                                     Wed &nbsp;
                                     <input
                                         type="checkbox"
                                         checked={this.state.days.Thursday}
-                                        onChange={this.handleChange}
+                                        onChange={this.ChangeThursdayHandler}
                                     />{" "}
                                     Thu &nbsp;
                                     <input
                                         type="checkbox"
                                         checked={this.state.days.Friday}
-                                        onChange={this.handleChange}
+                                        onChange={this.ChangeFridayHandler}
                                     />{" "}
                                     Fri
                                 </form>

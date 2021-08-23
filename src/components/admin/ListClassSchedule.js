@@ -5,15 +5,15 @@ class ListClassSchedule extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            schedules: [],
+            classes: [],
         };
         this.addSchedule = this.addSchedule.bind(this);
-        this.deleteSchedule = this.deleteSchedule.bind(this);
+        this.deleteClass = this.deleteClass.bind(this);
     }
 
     componentDidMount() {
-        AdminService.getSchedules().then((res) => {
-            this.setState({ schedules: res.data });
+        AdminService.getClasses().then((res) => {
+            this.setState({ classes: res.data });
         });
     }
 
@@ -21,14 +21,13 @@ class ListClassSchedule extends Component {
         this.props.history.push("/admin/add-class-schedule/-1");
     }
 
-    deleteSchedule(id) {
-        AdminService.deleteSchedule(id).then((res) => {
+    deleteClass(id) {
+        AdminService.deleteClass(id).then(res => {
             this.setState({
-                schedules: this.state.schedules.filter(
-                    (schedule) => schedule.id !== id
-                ),
-            });
-        });
+                classes: this.state.classes.filter(_class => _class.id !== id)
+            })
+        }
+        );
     }
 
     render() {
@@ -43,6 +42,7 @@ class ListClassSchedule extends Component {
                 <table className="table table-hover ">
                     <thead>
                         <tr>
+                            <th> Class id</th>
                             <th> Module Code </th>
                             <th> Module Name </th>
                             <th> Academic Year </th>
@@ -53,55 +53,53 @@ class ListClassSchedule extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.schedules.map((schedule) => (
-                            <tr key={schedule.id}>
-                                <td> {schedule._class.module.code} </td>
-                                <td> {schedule._class.module.name} </td>
-                                <td> {schedule._class.academicPeriod.year} </td>
-                                <td> {schedule._class.academicPeriod.semester} </td>
+                        {this.state.classes.map((_class) => (
+                            <tr key={_class.id}>
+                                <td> {_class.id} </td>
+                                <td> {_class.moduleCode} </td>
+                                <td> {_class.moduleName} </td>
+                                <td> {_class.year} </td>
+                                <td> {_class.semester} </td>
                                 <td>
-                                    {schedule._class.lecturer.firstName +
-                                        " " +
-                                        schedule._class.lecturer.lastName}
+                                    {_class.lecturerName}
                                 </td>
                                 <td>
                                     <form>
                                         <p>
                                             <input
                                                 type="checkbox"
-                                            // checked={this.props.}
-                                            // onChange={this.handleChange}
+                                                checked={_class.Monday}
                                             />{" "}
                                             Mon &nbsp;
                                             <input
                                                 type="checkbox"
-                                            // checked={this.props.}
-                                            // onChange={this.handleChange}
+                                                checked={_class.Tuesday}
+
                                             />{" "}
                                             Tue &nbsp;
                                             <input
                                                 type="checkbox"
-                                            // checked={this.props.}
-                                            // onChange={this.handleChange}
+                                                checked={_class.Wednesday}
+
                                             />{" "}
                                             Wed &nbsp;
                                             <input
                                                 type="checkbox"
-                                            // checked={this.props.}
-                                            // onChange={this.handleChange}
+                                                checked={_class.Thursday}
+
                                             />{" "}
                                             Thu &nbsp;
                                             <input
                                                 type="checkbox"
-                                            // checked={this.props.}
-                                            // onChange={this.handleChange}
+                                                checked={_class.Friday}
+
                                             />{" "}
                                             Fri
                                         </p>
                                     </form>
                                 </td>
                                 <td>
-                                    <button className="btn btn-outline-danger" onClick={() => this.deleteSchedule(schedule.id)}>
+                                    <button className="btn btn-outline-danger" onClick={() => this.deleteClass(_class.id)}>
                                         Delete
                                     </button>
                                 </td>
