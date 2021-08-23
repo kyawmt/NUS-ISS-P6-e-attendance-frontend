@@ -60,6 +60,10 @@ class LecturerService{
     getNameandDate(id){
         return axios.get(LECTURER_REST_API_URL+'/schedule'+id)
     }
+
+    getmaxID(){
+        return axios.get(LECTURER_REST_API_URL+'/maxschedule')
+    }
 }
 
 export default new LecturerService();
