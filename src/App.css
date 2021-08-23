@@ -53,6 +53,7 @@
 
 .header-navbar {
   background-color: #132B42;
+  color: aliceblue;  
   padding: 20px;
 }
 
@@ -63,7 +64,6 @@
 }
 
 .card{
-height:200px;
 width:200px;
 transition:.3s;
 }

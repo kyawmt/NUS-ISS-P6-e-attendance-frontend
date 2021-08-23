@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import FooterComponent from './components/fragments/FooterComponent';
 import HeaderComponent from './components/fragments/HeaderComponent';
 import LoginComponent from './components/fragments/LoginComponent';
@@ -13,6 +13,7 @@ import LecturerMainPage from './components/lecturer/LecturerMainPage';
 import HomeComponent from './components/fragments/HomeComponent';
 import ListStudent from './components/admin/ListStudent';
 import ListClassSchedule from './components/admin/ListClassSchedule';
+import AddClassSchedule from "./components/admin/AddClassSchedule";
 import ListClass from './components/admin/ListClass';
 import ListStudentsLeave from './components/admin/ListStudentsLeave';
 import ListModuleAttendence from './components/admin/ListModuleAttendance';
@@ -29,39 +30,40 @@ function App() {
   return (
     <div>
       <Router>
-          <HeaderComponent/>
-          <div className="container">
-            <Switch> 
-              <Route path="/" exact component={HomeComponent}></Route>
-              <Route path="/admin/home" component={AdminMainPageComponent}></Route>
-              <Route path="/lecturer/home" component={LecturerMainPage}></Route>
-              <Route path="/login" component={LoginComponent}></Route>
+        <HeaderComponent />
+        <div className="container">
+          <Switch>
+            <Route path="/" exact component={HomeComponent}></Route>
+            <Route path="/admin/home" component={AdminMainPageComponent}></Route>
+            <Route path="/lecturer/home" component={LecturerMainPage}></Route>
+            <Route path="/login" component={LoginComponent}></Route>
 
-              <Route path="/admin/lecturers" component={ListLecturer}></Route>
-              <Route path="/admin/add-lecturer/:id" component={AddOrUpdateLecturer}></Route>
-              <Route path="/admin/ListStudent" component={ListStudent}></Route>
+            <Route path="/admin/lecturers" component={ListLecturer}></Route>
+            <Route path="/admin/add-lecturer/:id" component={AddOrUpdateLecturer}></Route>
+            <Route path="/admin/ListStudent" component={ListStudent}></Route>
 
-              <Route path="/admin/ListModule" component={ListModule}></Route>
-              <Route path="/admin/add-Module/:id" component={AddOrUpdateModule}></Route>
-              <Route path="/admin/module-attendance" component={ListModuleAttendence}></Route>
-              <Route path="/admin/module-classes-attendance/:id" component={ViewModuleAttendence}></Route>
-              <Route path="/admin/class-stuednts-attendance/:id" component={ViewModuleStudentAttendance}></Route>
+            <Route path="/admin/ListModule" component={ListModule}></Route>
+            <Route path="/admin/add-Module/:id" component={AddOrUpdateModule}></Route>
+            <Route path="/admin/module-attendance" component={ListModuleAttendence}></Route>
+            <Route path="/admin/module-classes-attendance/:id" component={ViewModuleAttendence}></Route>
+            <Route path="/admin/class-stuednts-attendance/:id" component={ViewModuleStudentAttendance}></Route>
 
-              <Route path="/lecturer/dashboard" component={ViewDashboard} exact></Route>
+            <Route path="/lecturer/dashboard" component={ViewDashboard} exact></Route>
 
-              {/* these routes may need change when do the component coding*/}
-              <Route path="/admin/class-schedule" component={ListClassSchedule}></Route>
-              <Route path="/admin/Class" component={ListClass}></Route>
-              <Route path="/admin/student-leave-application" component={ListStudentsLeave}></Route>
+            {/* these routes may need change when do the component coding*/}
+            <Route path="/admin/ListClassSchedule" component={ListClassSchedule}></Route>
+            <Route path="/admin/add-class-schedule/:id" component={AddClassSchedule} ></Route>
+            <Route path="/admin/Class" component={ListClass}></Route>
+            <Route path="/admin/student-leave-application" component={ListStudentsLeave}></Route>
 
 
-              <Route path="/lecturer/schedules" component={ListTeachingSchedule}></Route>
-              <Route path="/lecturer/qrcode/:id/:option" component={ViewClassQRCode}></Route>
-              <Route path="/lecturer/overview/:id" component={ListClassStudentAttendance}></Route>
-              
-            </Switch>
-          </div>
-          <FooterComponent/>
+            <Route path="/lecturer/schedules" component={ListTeachingSchedule}></Route>
+            <Route path="/lecturer/qrcode/:id/:option" component={ViewClassQRCode}></Route>
+            <Route path="/lecturer/overview/:id" component={ListClassStudentAttendance}></Route>
+
+          </Switch>
+        </div>
+        <FooterComponent />
       </Router>
     </div>
   );
