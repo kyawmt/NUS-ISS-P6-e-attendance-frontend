@@ -12,12 +12,17 @@ class AddOrUpdateLecturer extends Component {
 
             firstName:'',
             lastName:'', 
-            userName:''
+            userName:'',
+            firstNameError: "",
+            lastNameError: "",
+            userNameError: "",
+            isUserNameExist: false
         }
 
         this.changeFirstNameHandlers=this.changeFirstNameHandlers.bind(this);
         this.changeLastNameHandlers=this.changeLastNameHandlers.bind(this);
         this.changeUserNameHandlers=this.changeUserNameHandlers.bind(this);
+        this.formValidation = this.formValidation.bind(this);
         this.saveLecturer=this.saveLecturer.bind(this)
     }
 
@@ -37,27 +42,70 @@ class AddOrUpdateLecturer extends Component {
                 });
             });
         }
+    }   
+
+    formValidation() {
+
+        let {firstName, lastName, userName, isUserNameExist} = this.state;
+        let isValid = true;
+
+        if(firstName.trim().length == 0) {
+            isValid = false;
+            this.setState({firstNameError: "Please fill in the first name"});
+        } else {
+            this.setState({firstNameError: ""});
+        }
+
+        if(lastName.trim().length == 0) {
+            isValid = false;
+            this.setState({lastNameError: "Please fill in the last name"});
+        } else {
+            this.setState({lastNameError: ""});
+        }
+
+        if(userName.trim().length == 0) {
+            isValid = false;
+            this.setState({userNameError: "Please fill in the user name"});
+        }
+        else if(!userName.includes("@")) {
+            isValid = false;
+            this.setState({userNameError: "Please use email as user name"});
+        }
+        else if(isUserNameExist){
+            isValid = false;
+            this.setState({userNameError: "User name exist in system"});
+        }
+        else {
+            this.setState({userNameError: ""});
+        }
+
+        return isValid;
     }
 
     saveLecturer=(e)=>{
         e.preventDefault();
-        let lecturer={
-            firstName:this.state.firstName,
-            lastName:this.state.lastName, 
-            userName:this.state.userName
-        };
-        console.log('lecturer=> '+JSON.stringify(lecturer));
-        // console.log('id => ' + JSON.stringify(this.state.id));
 
-        // update: step 5
-        if(this.state.id==-1){
-            AdminService.addLecturer(lecturer).then(res=>{
-                this.props.history.push('/admin/lecturers');
-            }); 
-        }else{
-            AdminService.updateLecturer(lecturer,this.state.id).then(res =>{
-                this.props.history.push('/admin/lecturers');
-            });
+        const isValid = this.formValidation();
+
+        if (isValid){
+            let lecturer={
+                firstName:this.state.firstName,
+                lastName:this.state.lastName, 
+                userName:this.state.userName
+            };
+            console.log('lecturer=> '+JSON.stringify(lecturer));
+            // console.log('id => ' + JSON.stringify(this.state.id));
+    
+            // update: step 5
+            if(this.state.id==-1){
+                AdminService.addLecturer(lecturer).then(res=>{
+                    this.props.history.push('/admin/lecturers');
+                }); 
+            }else{
+                AdminService.updateLecturer(lecturer,this.state.id).then(res =>{
+                    this.props.history.push('/admin/lecturers');
+                });
+            }
         }
     }
 
@@ -69,6 +117,9 @@ class AddOrUpdateLecturer extends Component {
     }
     changeUserNameHandlers=(event)=>{
         this.setState({userName:event.target.value});
+        AdminService.isLecturerExist(this.state.id, event.target.value).then(
+            res => this.setState({isUserNameExist: res.data})
+            ); 
     }
 
     cancel(){
@@ -98,20 +149,26 @@ class AddOrUpdateLecturer extends Component {
                                     <div className="form-group">
                                         <label>First Name: </label>
                                         <input placeholder="Enter First Name" name="firstName" className="form-control" 
-                                        value={this.state.firstName} onChange={this.changeFirstNameHandlers}/>
+                                        value={this.state.firstName} onChange={this.changeFirstNameHandlers}
+                                        style= {{ border: this.state.firstNameError !== "" ? '0.5px solid red' : ''}}/>
                                     </div>
+                                    <div style={{fontSize: 10, color: "red"}}>{this.state.firstNameError}</div>
                                     <div className="form-group" style={{marginTop:"10px"}}>
                                         <label>Last Name: </label>
                                         <input placeholder="Enter Last Name" name="lastName" className="form-control" 
-                                        value={this.state.lastName} onChange={this.changeLastNameHandlers}/>
+                                        value={this.state.lastName} onChange={this.changeLastNameHandlers}
+                                        style= {{ border: this.state.lastNameError !== "" ? '0.5px solid red' : ''}}/>
                                     </div>
+                                    <div style={{fontSize: 10, color: "red"}}>{this.state.lastNameError}</div>
                                     <div className="form-group" style={{marginTop:"10px"}}>
                                         <label>User Name: </label>
                                         <input placeholder="Enter User Name" name="userName" className="form-control" 
-                                        value={this.state.userName} onChange={this.changeUserNameHandlers}/>
+                                        value={this.state.userName} onChange={this.changeUserNameHandlers}
+                                        style= {{ border: this.state.userNameError !== "" ? '0.5px solid red' : ''}}/>
                                     </div>
+                                    <div style={{fontSize: 10, color: "red"}}>{this.state.userNameError}</div>
                                     <div style={{marginTop:"10px"}}>
-                                        <button className="btn btn-success" onClick={this.saveLecturer}>Save</button>
+                                        <button className="btn btn-success" onClick={this.saveLecturer}>{this.state.id == -1 ? "Save" : "Update"}</button>
                                         <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft:"10px"}}>Cancel</button>
                                     </div>
                                 </form>

@@ -12,6 +12,7 @@ import AdminMainPageComponent from './components/admin/AdminMainPageComponent';
 import LecturerMainPage from './components/lecturer/LecturerMainPage';
 import HomeComponent from './components/fragments/HomeComponent';
 import ListStudent from './components/admin/ListStudent';
+import AddOrUpdateStudent from './components/admin/AddOrUpdateStudent';
 import ListClassSchedule from './components/admin/ListClassSchedule';
 import AddClassSchedule from "./components/admin/AddClassSchedule";
 import ListClass from './components/admin/ListClass';
@@ -40,7 +41,8 @@ function App() {
 
             <Route path="/admin/lecturers" component={ListLecturer}></Route>
             <Route path="/admin/add-lecturer/:id" component={AddOrUpdateLecturer}></Route>
-            <Route path="/admin/ListStudent" component={ListStudent}></Route>
+            <Route path="/admin/students" component={ListStudent}></Route>
+            <Route path="/admin/add-student/:id" component={AddOrUpdateStudent}></Route>
 
             <Route path="/admin/ListModule" component={ListModule}></Route>
             <Route path="/admin/add-Module/:id" component={AddOrUpdateModule}></Route>

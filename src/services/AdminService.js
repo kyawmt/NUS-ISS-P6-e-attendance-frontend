@@ -11,6 +11,31 @@ const Class_REST_API_URL = 'http://localhost:8080/api/admin/classes';
 const ClassSchedule_REST_API_URL = "http://localhost:8080/api/admin/schedules";
 
 class AdminService {
+
+    getStudents(){
+        return axiosInstance.get(Student_REST_API_URL);
+    }
+
+    addStudent(student){
+        return axiosInstance.post(Student_REST_API_URL,student)
+    }
+
+    getStudentById(id){
+        return axiosInstance.get(Student_REST_API_URL+'/'+id);
+    }
+
+    updateStudent(student,id){
+        return axiosInstance.put(Student_REST_API_URL+'/'+id,student);
+    }
+
+    deleteStudent(id){
+        return axiosInstance.delete(Student_REST_API_URL+'/'+id);
+    }
+
+    isStudentExist(id, userName) {
+        return axiosInstance.get(Student_REST_API_URL + '/check-exist' + id, { params: { userName }});
+    }
+
     getLecturers() {
         return axiosInstance.get(Lecturer_REST_API_URL);
     }
@@ -29,6 +54,10 @@ class AdminService {
 
     deleteLecturer(lecturerId) {
         return axiosInstance.delete(Lecturer_REST_API_URL + '/' + lecturerId);
+    }
+
+    isLecturerExist(id, userName) {
+        return axiosInstance.get(Lecturer_REST_API_URL + '/check-exist/' + id, { params: { userName }});
     }
 
     getModules() {
