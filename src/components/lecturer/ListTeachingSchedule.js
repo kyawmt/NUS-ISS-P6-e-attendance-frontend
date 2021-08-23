@@ -55,23 +55,50 @@ class ListTeachingSchedule extends Component {
     render() {
         return (
             <div>
-                <h1 className="text-center">Schedules</h1>
+                <h1 className="text-center">Class Schedules</h1>
 
-                <DatePicker
-                    selected={ this.state.startDate }
-                    onChange={ this.handleStartDateChange }
-                    name="startDate"
-                    dateFormat="dd/MM/yyyy"
-                />
+                <br></br>
 
-                <DatePicker
-                    selected={ this.state.endDate }
-                    onChange={ this.handleEndDateChange }
-                    name="endDate"
-                    dateFormat="dd/MM/yyyy"
-                />
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Start Date: 
+                            </td>
+                            <td>
+                            <DatePicker
+                                selected={ this.state.startDate }
+                                onChange={ this.handleStartDateChange }
+                                name="startDate"
+                                dateFormat="dd/MM/yyyy"
+                            />
+                            </td>
+
+                            <td>
+                                End Date: 
+                            </td>
+                           
+                            <td>
+                                                  
+                            <DatePicker
+                                selected={ this.state.endDate }
+                                onChange={ this.handleEndDateChange }
+                                name="endDate"
+                                dateFormat="dd/MM/yyyy"
+                            />
+                            </td>
+                            <td>
+                                <button className="btn btn-primary" onClick={ this.filterSchedule }>Filter</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
                 
-                <button className="btn btn-primary" onClick={ this.filterSchedule }>Filter</button>
+
+                
+                
+                
 
                 
                 <table className="table table-hover ">
