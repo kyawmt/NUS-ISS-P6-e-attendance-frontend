@@ -20,16 +20,16 @@ import ListStudentsLeave from './components/admin/ListStudentsLeave';
 import ListModuleAttendence from './components/admin/ListModuleAttendance';
 import ViewModuleStudentAttendance from './components/admin/ViewModuleStudentAttendance';
 import ViewModuleAttendence from './components/admin/ViewModuleAttendance';
-import addOrUpdateModule from './components/admin/AddOrUpdateModule'
 import ViewDashboard from './components/lecturer/ViewDashboard';
-
+import PredictedStudents from './components/lecturer/PredictedStudents';
 import ListTeachingSchedule from './components/lecturer/ListTeachingSchedule';
 import ViewClassQRCode from './components/lecturer/ViewClassQRCode';
 import ListClassStudentAttendance from './components/lecturer/ListClassStudentAttendence';
 
 function App() {
+
   return (
-    <div>
+    <div className="page-container">
       <Router>
         <HeaderComponent />
         <div className="container">
@@ -50,7 +50,8 @@ function App() {
             <Route path="/admin/module-classes-attendance/:id" component={ViewModuleAttendence}></Route>
             <Route path="/admin/class-stuednts-attendance/:id" component={ViewModuleStudentAttendance}></Route>
 
-            <Route path="/lecturer/dashboard" component={ViewDashboard} exact></Route>
+            <Route path="/lecturer/dashboard/:id" component={ViewDashboard} exact></Route>
+            <Route path="/lecturer/predictedStudents/:id/:index" component={PredictedStudents}></Route>
 
             {/* these routes may need change when do the component coding*/}
             <Route path="/admin/ListClassSchedule" component={ListClassSchedule}></Route>

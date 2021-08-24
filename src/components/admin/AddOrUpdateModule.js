@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Utility } from 'react';
 import AdminService from '../../services/AdminService';
 
 class AddOrUpdateModule extends Component {
@@ -14,10 +14,13 @@ class AddOrUpdateModule extends Component {
             codeError: "",
             nameError: "",
             minAttendanceError: "",
-            modules: []
+            validationName: "",
+            validationCode: "",
         }
         
         this.handleChange = this.handleChange.bind(this);
+        this.handleCodeChange = this.handleCodeChange.bind(this)
+        this.handleNameChange = this.handleNameChange.bind(this)
         this.saveModule = this.saveModule.bind(this);
         this.cancel = this.cancel.bind(this);
         this.formValidation = this.formValidation.bind(this);
@@ -25,7 +28,7 @@ class AddOrUpdateModule extends Component {
 
     componentDidMount() {
 
-        if(this.state.id == -1) {
+        if(this.state.id === -1) {
             return;
         } else {
             AdminService.getModuleById(this.state.id).then(
@@ -45,6 +48,24 @@ class AddOrUpdateModule extends Component {
         let {name, value} = event.target;
         this.setState({
             [name]: value
+        })
+    }
+
+    handleCodeChange(event) {
+        this.setState({code: event.target.value})
+        AdminService.getModuleValidation("code", event.target.value).then(response => {
+            this.setState({
+                validationCode: response.data.modulecode
+            })
+        })
+    }
+
+    handleNameChange(event) {
+        this.setState({name: event.target.value})
+        AdminService.getModuleValidation("name", event.target.value).then(response => {
+            this.setState({
+                validationName: response.data.modulename
+            })
         })
     }
 
@@ -78,18 +99,18 @@ class AddOrUpdateModule extends Component {
             this.setState({minAttendanceError: ""});
         }
 
-        if(this.state.id == -1) {
-            this.state.modules.map(module => {
-                if(this.state.code === module.code) {
-                    isValid = false;
-                    this.setState({codeError: "Module code exist in system"});
-                } 
-    
-                if(this.state.name === module.name) {
-                    isValid = false;
-                    this.setState({nameError: "Module name exist in system"});
-                } 
-            })
+        if(code.length != 0) {
+            if(this.state.validationCode === "false") {
+                this.setState({codeError: "Module code exist in system"});
+                isValid = false;
+            } 
+        } 
+
+        if(name.length != 0) {
+            if(this.state.validationName === "false") {
+                this.setState({nameError: "Module name exist in system"});
+                isValid = false;
+            }
         }
 
         return isValid;
@@ -99,22 +120,18 @@ class AddOrUpdateModule extends Component {
         event.preventDefault();
 
         const isValid = this.formValidation();
-        // console.log(isValid);
-        // console.log(this.state.codeError);
-        // console.log(this.state.nameError);
-        // console.log(this.state.minAttendanceError);
 
         if(isValid) {
             let module = {code: this.state.code, name: this.state.name, minAttendance: this.state.minAttendance};
         
             if(this.state.id == -1) {
                 AdminService.addModule(module).then(
-                    reponse => this.props.history.push('/admin/ListModule')
+                    response => this.props.history.push('/admin/ListModule')
                 )
             }
             else {
                 AdminService.updateModule(this.state.id, module).then(
-                    reponse => this.props.history.push('/admin/ListModule')
+                    response => this.props.history.push('/admin/ListModule')
                 )
             }
         }
@@ -127,7 +144,7 @@ class AddOrUpdateModule extends Component {
     render() {
         return (
              <div>
-               <div classNAme ="container">
+               <div className ="container">
                    <div className="row">
                         <div className= "card col-md-6 offset-md-3 offset-md-3" style={{marginTop:"50px"}}>
                             <h3 className="text-center">{this.state.id == -1 ? "Module Form" : "Edit Module Form"}</h3>
@@ -136,14 +153,14 @@ class AddOrUpdateModule extends Component {
                                     <div className= "form-group">
                                         <label>Module Code:</label>
                                         <input className= "form-control" type="text" name="code"
-                                        value={this.state.code} onChange={this.handleChange}
+                                        value={this.state.code} onChange={this.handleCodeChange}
                                         style= {{ border: this.state.codeError !== "" ? '0.5px solid red' : ''}}/>
                                     </div>
                                     <div style={{fontSize: 10, color: "red"}}>{this.state.codeError}</div>
                                     <div className= "form-group">
                                         <label>Module Name:</label>
                                         <input className= "form-control" type="text" name="name"
-                                        value={this.state.name} onChange={this.handleChange}
+                                        value={this.state.name} onChange={this.handleNameChange}
                                         style= {{ border: this.state.nameError !== "" ? '0.5px solid red' : ''}}/>
                                     </div>
                                     <div style={{fontSize: 10, color: "red"}}>{this.state.nameError}</div>

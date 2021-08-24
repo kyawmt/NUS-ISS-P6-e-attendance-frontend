@@ -12,6 +12,9 @@ class FeaturesDashboard extends Component {
             class: "",
             attendance: [],
         };
+
+        this.handlePass = this.handlePass.bind(this);
+        this.handleFail = this.handleFail.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
@@ -30,7 +33,15 @@ class FeaturesDashboard extends Component {
                 attendance: response.data
             })
         );
-      }
+    }
+
+    handlePass() {
+        this.props.onPredictedPass(this.state.id);
+    }
+
+    handleFail() {
+        this.props.onPredictedFail(this.state.id);
+    }
 
     render() {
 
@@ -77,7 +88,7 @@ class FeaturesDashboard extends Component {
                             </div>
                         </div>
                         <div className="featuredItem">
-                            <h4 className="featuredTitle">Average Class Attendance</h4>
+                            <h4 className="featuredTitle">Avg Class Attendance</h4>
                             <div className="featuredInfo">
                                 <span className="classAverage">{this.state.class.rate}</span>
                             </div>
@@ -99,6 +110,7 @@ class FeaturesDashboard extends Component {
                                         outerRadius={80}
                                         fill="#8884d8"
                                         dataKey="value"
+                                        isAnimationActive={false}
                                     >
     
                                         {dataPie.map((entry, index) => (

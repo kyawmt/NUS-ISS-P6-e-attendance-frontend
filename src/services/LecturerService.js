@@ -32,16 +32,16 @@ class LecturerService{
         return axiosInstance.get(Lecturer_Schedules_REST_API_URL+'/attendance/'+scheduleId+'/'+option);
     }
 
-    getClassById(lecturerId){
-        return axios.get(Class_REST_API_URL+'/classes/'+lecturerId);
+    getClassById(){
+        return axiosInstance.get(Class_REST_API_URL+'/classes');
     }
 
     getClassByClassId(classId){
-        return axios.get(Class_REST_API_URL+'/class/'+classId);
+        return axiosInstance.get(Class_REST_API_URL+'/class/'+classId);
     }
 
     getAttendanceByClassId(classId){
-        return axios.get(Class_REST_API_URL+'/classDates/'+classId);
+        return axiosInstance.get(Class_REST_API_URL+'/classDates/'+classId);
     }
 
     getPresentStudentBySelecting(id){
@@ -64,6 +64,10 @@ class LecturerService{
 
     getmaxID(){
         return axios.get(LECTURER_REST_API_URL+'/maxschedule')
+    }
+
+    getStudents(classId, index){
+        return axiosInstance.get(Class_REST_API_URL+'/prediction/'+classId+'/'+index);
     }
 }
 

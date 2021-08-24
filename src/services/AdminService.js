@@ -119,6 +119,10 @@ class AdminService {
     addSchedules(schedule) {
         return axiosInstance.post(ClassSchedule_REST_API_URL, schedule);
     }
+
+    getModuleValidation(toCheck, moduleValidation){
+        return axiosInstance.get(Module_REST_API_URL+'/validation/'+toCheck+'/'+moduleValidation);
+    }
 }
 
 export default new AdminService();

@@ -16,6 +16,7 @@ class ListModule extends Component {
         this.addModule = this.addModule.bind(this);
         this.editModule = this.editModule.bind(this);
         this.deleteModule = this.deleteModule.bind(this);
+        this.handlePageClick = this.handlePageClick.bind(this);
     }
 
     componentDidMount() {
@@ -28,7 +29,7 @@ class ListModule extends Component {
             })
         )
 
-        console.log(this.state.pages);
+        console.log(this.state.modules)
     }
 
     addModule() {
@@ -42,9 +43,11 @@ class ListModule extends Component {
     deleteModule(id) {
         AdminService.deleteModule(id).then(res=>{
             this.setState({
-                modules: this.state.modules.filter(module => module.id !== id)
-            })}
-        );
+                modules: this.state.modules.filter(module => module.id !== id),
+                pages: Math.ceil(this.state.modules.filter(module => module.id !== id).length/ this.state.perPage)
+            })
+        })
+        window.location.reload();
     }
 
     handlePageClick = (event) => {

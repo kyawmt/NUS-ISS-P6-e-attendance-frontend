@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
 import LecturerService from '../../services/LecturerService';
-import FeaturesDashboard from './FeaturesDashboard';
 import './sidebar.css'
+import ReactPaginate from 'react-paginate';
 
 class Sidebar extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            lecturerId: 2, //Assumption (After login lecturer id is 2)
             classes: [],
+            perPage: 5,
+            page: 0,
+            pages: 0,
         };
 
         this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidMount() {
-        LecturerService.getClassById(this.state.lecturerId).then(
+        LecturerService.getClassById().then(
             response => this.setState({
-                classes: response.data
+                classes: response.data,
+                pages: Math.ceil(response.data.length/ this.state.perPage)
             })
         )
     }
@@ -29,7 +32,9 @@ class Sidebar extends Component {
 
     render() {
 
-        let data = this.state.classes.map(_class => {
+        const {page, perPage, pages, classes} = this.state;
+            let items = classes.slice(page * perPage, (page + 1) * perPage);
+            let data = items.map(_class => {
                 return(
                     <div>
                     <li className="classItem">
@@ -42,7 +47,6 @@ class Sidebar extends Component {
                 )
             })
 
-
         return (
             <div className="sidebar">
                 <div className="classes">
@@ -50,6 +54,22 @@ class Sidebar extends Component {
                     <ul className="classList">
                         {data}
                     </ul>
+                </div>
+                <div className="sideBarPagination">
+                <ReactPaginate
+                    previousLabel={'previous'}
+                    nextLabel={'next'}
+                    pageCount={this.state.pages}
+                    // marginPagesDisplayed={2}
+                    // pageRangeDisplayed={5}
+                    onPageChange={this.handlePageClick}
+                    containerClassName={'pagination'}
+                    activeClassName={'active'}
+                    previousLinkClassName={'page-link'}
+                    nextLinkClassName={'page-link'}
+                    // pageClassName={'page-item'}
+                    pageLinkClassName={'page-link'}
+                />
                 </div>
             </div>
         );

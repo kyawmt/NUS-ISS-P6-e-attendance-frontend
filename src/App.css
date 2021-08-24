@@ -102,3 +102,12 @@ transition:.3s;
 .customMinWidth {
   min-width: max-content;
 }
+
+.page-container{
+  position: relative;
+  min-height: 100vh;
+}
+
+.container{
+  padding-bottom: 2.5rem;
+}

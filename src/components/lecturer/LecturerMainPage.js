@@ -29,6 +29,7 @@ class LecturerMainPage extends Component {
     render() {
         const id= this.state.id.maxID;
         const myLink = `/lecturer/overview/${id}`;
+        const dashboardLink = `/lecturer/dashboard/0`
         return (
             <div>
                 <div className="container">
@@ -47,7 +48,7 @@ class LecturerMainPage extends Component {
 
                 <div className="col col-lg-3 d-inline-flex justify-content-center m-1 customMinWidth">
                 <div className="card white darken-1">
-                <a href={ViewDashboard} className="v-align"><img src={Dashboard} alt="Dashboard" className="img-fluid" height="200" width="200"/></a>
+                <a href={dashboardLink} className="v-align"><img src={Dashboard} alt="Dashboard" className="img-fluid" height="200" width="200"/></a>
                 </div>
                 </div>
 
