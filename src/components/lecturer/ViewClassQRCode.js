@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Countdown from 'react-countdown';
 import QRCode from 'react-qr-code';
-import { Route , withRouter} from 'react-router-dom';
 import LecturerService from '../../services/LecturerService';
 
 class ViewClassQRCode extends Component {

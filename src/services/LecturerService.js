@@ -12,12 +12,12 @@ class LecturerService{
     }
 
     getLecturerTodaySchedule(){
-        return axiosInstance.get(Lecturer_Schedules_REST_API_URL+'/'+'todaySchedule');
+        return axiosInstance.get(Lecturer_Schedules_REST_API_URL+'/todaySchedule');
     }
 
     getSchedulesByRange(startDateinMs, endDateinMs){
         
-        return axiosInstance.get(Lecturer_Schedules_REST_API_URL+'/'+ 'schedulesByRange/'+ startDateinMs + '/' + endDateinMs);
+        return axiosInstance.get(Lecturer_Schedules_REST_API_URL+'/schedulesByRange/'+ startDateinMs + '/' + endDateinMs);
     }
 
     getSchedulebyId(scheduleId){

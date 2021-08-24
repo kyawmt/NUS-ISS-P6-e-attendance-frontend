@@ -33,7 +33,7 @@ class AdminService {
     }
 
     isStudentExist(id, userName) {
-        return axiosInstance.get(Student_REST_API_URL + '/check-exist' + id, { params: { userName }});
+        return axiosInstance.get(Student_REST_API_URL + '/check-exist/' + id, { params: { userName }});
     }
 
     getLecturers() {

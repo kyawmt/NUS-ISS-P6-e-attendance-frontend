@@ -3,7 +3,6 @@ import TabNav from './TabNav';
 import Tab from "./Tab";
 import LecturerService from '../../services/LecturerService';
 import {Pie} from 'react-chartjs-2';
-import { Button } from 'bootstrap';
 
 
 
@@ -52,8 +51,6 @@ class ListClassStudentAttendance extends React.Component{
         })
 
         this.state.value = {id}
-
-        
         
     }
     getOverviewFromSelection(id){

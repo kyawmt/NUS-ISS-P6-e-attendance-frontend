@@ -32,7 +32,7 @@ class Sidebar extends Component {
 
     render() {
 
-        const {page, perPage, pages, classes} = this.state;
+        const {page, perPage,  classes} = this.state;
             let items = classes.slice(page * perPage, (page + 1) * perPage);
             let data = items.map(_class => {
                 return(

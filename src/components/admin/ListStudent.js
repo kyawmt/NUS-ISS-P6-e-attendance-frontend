@@ -43,6 +43,10 @@ class ListStudent extends Component {
         this.props.history.push(`/admin/add-student/${id}`);
     }
 
+    addStudentPhoto(id) {
+        this.props.history.push(`/admin/add-student-photo/${id}`);
+    }
+
     deleteStudent(id) {
         AdminService.deleteStudent(id).then(
             this.setState({
@@ -69,7 +73,9 @@ class ListStudent extends Component {
                         <td>{student.firstName}</td>
                         <td>{student.lastName}</td>
                         <td>{student.userName}</td>
-                        <td><button className="btn btn-outline-info" onClick= {() => this.editStudent(student.id)}>Edit</button></td>
+                        <td><button className="btn btn-outline-info" onClick= {() => this.editStudent(student.id)}>Edit Profile</button></td>
+                        <td><button className="btn btn-outline-info" onClick= {() => this.addStudentPhoto(student.id)} 
+                        style={{ backgroundColor: student.photoRegistered ? '#605b66' : '' }}>Add Photo</button></td>
                         <td><button className="btn btn-outline-danger" onClick= {() => this.deleteStudent(student.id)}>Delete</button></td>
                     </tr>
                 )  
@@ -91,6 +97,7 @@ class ListStudent extends Component {
                                 <th>Last Name</th>
                                 <th>User Name</th>
                                 <th>Edit Student</th>
+                                <th>Register Photo</th>
                                 <th>Delete Student</th>
                             </tr>
                         </thead>

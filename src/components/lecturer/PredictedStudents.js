@@ -43,7 +43,7 @@ class PredictedStudents extends Component {
     render() {
         if(this.state.students.length !== 0) {
 
-            const {page, perPage, pages, students} = this.state;
+            const {page, perPage, students} = this.state;
             let items = students.slice(page * perPage, (page + 1) * perPage);
             let data = items.map( student => {
                 return (
