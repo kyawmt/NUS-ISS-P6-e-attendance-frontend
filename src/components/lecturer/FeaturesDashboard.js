@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import LecturerService from '../../services/LecturerService';
-import './featuresDashboard.css'
 
 class FeaturesDashboard extends Component {
     constructor(props) {

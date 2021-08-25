@@ -118,15 +118,15 @@ class AdminService {
     }
 
     getStudentsNotInClass(classId){
-        return axios.get(EnrollStudent_REST_API_URL+'/'+classId);
+        return axiosInstance.get(EnrollStudent_REST_API_URL+'/'+classId);
     }
 
     removeStudentsFromClass(classId,studentsId){
-        return axios.post(ClassStudents_REST_API_URL+'/'+ classId, studentsId)
+        return axiosInstance.post(ClassStudents_REST_API_URL+'/'+ classId, studentsId)
     }
 
     enrollStudents(classId,studentsId){
-        return axios.post(EnrollStudent_REST_API_URL+'/'+ classId, studentsId)
+        return axiosInstance.post(EnrollStudent_REST_API_URL+'/'+ classId, studentsId)
     }
 
     addSchedules(schedule) {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import LecturerService from '../../services/LecturerService';
-import './sidebar.css'
 import ReactPaginate from 'react-paginate';
 
 class Sidebar extends Component {
