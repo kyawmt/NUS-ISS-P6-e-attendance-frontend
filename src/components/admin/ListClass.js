@@ -49,11 +49,11 @@ class ListClass extends Component {
                 return (
                     <tr key={c.id}>
                         <td>{c.code}</td>
-                        <td>{c.module.code}</td>
-                        <td>{c.module.name}</td>
-                        <td>{c.academicPeriod.year}</td>
-                        <td>{c.academicPeriod.semester}</td>
-                        <td>{c.lecturer.firstName} {c.lecturer.lastName}</td>
+                        <td>{c.moduleCode}</td>
+                        <td>{c.moduleName}</td>
+                        <td>{c.year}</td>
+                        <td>{c.semester}</td>
+                        <td>{c.lecturerName}</td>
                         <td><button className="btn btn-outline-info" onClick= {() => this.enrollStudents(c.id)}>Enroll</button></td>
                         <td><button className="btn btn-outline-danger" onClick= {() => this.viewEnrolledStudents(c.id)}>View</button></td>
                     </tr>

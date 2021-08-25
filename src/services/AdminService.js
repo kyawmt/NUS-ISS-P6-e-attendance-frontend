@@ -7,34 +7,35 @@ const ModuleClasses_REST_API_URL = 'http://localhost:8080/api/admin/module-class
 const ClassStudents_REST_API_URL = 'http://localhost:8080/api/admin/module-classes-students';
 const ModuleClassInfo_REST_API_URL = 'http://localhost:8080/api/admin/module-classes-info';
 const Class_REST_API_URL = 'http://localhost:8080/api/admin/classes';
-const EnrollStudent_REST_API_URL='http://localhost:8080/api/admin/class-enroll-students';
+const EnrollStudent_REST_API_URL = 'http://localhost:8080/api/admin/class-enroll-students';
 const ClassSchedule_REST_API_URL = "http://localhost:8080/api/admin/schedules";
 const AcademicPeriod_REST_API_URL = "http://localhost:8080/api/admin/academicPeriod";
+const EMAIL_REST_API_URL = "http://localhost:8080/api/admin/email"
 
 class AdminService {
 
-    getStudents(){
+    getStudents() {
         return axiosInstance.get(Student_REST_API_URL);
     }
 
-    addStudent(student){
-        return axiosInstance.post(Student_REST_API_URL,student)
+    addStudent(student) {
+        return axiosInstance.post(Student_REST_API_URL, student)
     }
 
-    getStudentById(id){
-        return axiosInstance.get(Student_REST_API_URL+'/'+id);
+    getStudentById(id) {
+        return axiosInstance.get(Student_REST_API_URL + '/' + id);
     }
 
-    updateStudent(student,id){
-        return axiosInstance.put(Student_REST_API_URL+'/'+id,student);
+    updateStudent(student, id) {
+        return axiosInstance.put(Student_REST_API_URL + '/' + id, student);
     }
 
-    deleteStudent(id){
-        return axiosInstance.delete(Student_REST_API_URL+'/'+id);
+    deleteStudent(id) {
+        return axiosInstance.delete(Student_REST_API_URL + '/' + id);
     }
 
     isStudentExist(id, userName) {
-        return axiosInstance.get(Student_REST_API_URL + '/check-exist/' + id, { params: { userName }});
+        return axiosInstance.get(Student_REST_API_URL + '/check-exist/' + id, { params: { userName } });
     }
 
     getLecturers() {
@@ -58,7 +59,7 @@ class AdminService {
     }
 
     isLecturerExist(id, userName) {
-        return axiosInstance.get(Lecturer_REST_API_URL + '/check-exist/' + id, { params: { userName }});
+        return axiosInstance.get(Lecturer_REST_API_URL + '/check-exist/' + id, { params: { userName } });
     }
 
     getModules() {
@@ -117,24 +118,28 @@ class AdminService {
         return axiosInstance.delete(Class_REST_API_URL + "/" + classId);
     }
 
-    getStudentsNotInClass(classId){
-        return axiosInstance.get(EnrollStudent_REST_API_URL+'/'+classId);
+    getStudentsNotInClass(classId) {
+        return axiosInstance.get(EnrollStudent_REST_API_URL + '/' + classId);
     }
 
-    removeStudentsFromClass(classId,studentsId){
-        return axiosInstance.post(ClassStudents_REST_API_URL+'/'+ classId, studentsId)
+    removeStudentsFromClass(classId, studentsId) {
+        return axiosInstance.post(ClassStudents_REST_API_URL + '/' + classId, studentsId)
     }
 
-    enrollStudents(classId,studentsId){
-        return axiosInstance.post(EnrollStudent_REST_API_URL+'/'+ classId, studentsId)
+    enrollStudents(classId, studentsId) {
+        return axiosInstance.post(EnrollStudent_REST_API_URL + '/' + classId, studentsId)
     }
 
     addSchedules(schedule) {
         return axiosInstance.post(ClassSchedule_REST_API_URL, schedule);
     }
 
-    getModuleValidation(toCheck, moduleValidation){
-        return axiosInstance.get(Module_REST_API_URL+'/validation/'+toCheck+'/'+moduleValidation);
+    getModuleValidation(toCheck, moduleValidation) {
+        return axiosInstance.get(Module_REST_API_URL + '/validation/' + toCheck + '/' + moduleValidation);
+    }
+
+    sendEmail(studentId, classCode) {
+        return axiosInstance.post(EMAIL_REST_API_URL + '/' + classCode + '/' + studentId)
     }
 }
 

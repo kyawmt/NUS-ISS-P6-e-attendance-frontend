@@ -55,7 +55,7 @@ class ListClassSchedule extends Component {
                     <tbody>
                         {this.state.classes.map((_class) => (
                             <tr key={_class.id}>
-                                <td> {_class.id} </td>
+                                <td> {_class.code} </td>
                                 <td> {_class.moduleCode} </td>
                                 <td> {_class.moduleName} </td>
                                 <td> {_class.year} </td>

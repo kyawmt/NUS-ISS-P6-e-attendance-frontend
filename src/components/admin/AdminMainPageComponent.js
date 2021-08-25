@@ -56,7 +56,7 @@ class AdminMainPageComponent extends Component {
 
             <div className="col col-lg-3 d-inline-flex justify-content-center m-1 customMinWidth">
               <div className="card white darken-1">
-                <a href={"./ListClass"} className="v-align">
+                <a href={"./classes"} className="v-align">
                   <img
                     src={Enrolments}
                     alt="Enrolments"
