@@ -25,6 +25,8 @@ import PredictedStudents from './components/lecturer/PredictedStudents';
 import ListTeachingSchedule from './components/lecturer/ListTeachingSchedule';
 import ViewClassQRCode from './components/lecturer/ViewClassQRCode';
 import ListClassStudentAttendance from './components/lecturer/ListClassStudentAttendence';
+import ViewClassStudents from './components/admin/ViewClassStudents';
+import EnrollStudents from './components/admin/EnrollStudents';
 
 function App() {
 
