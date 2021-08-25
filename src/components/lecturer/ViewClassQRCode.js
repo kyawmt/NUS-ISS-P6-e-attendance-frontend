@@ -15,7 +15,7 @@ class ViewClassQRCode extends Component {
             ModuleName:"",
             Date:"",
             QRCodeData:"",
-            remainingTime: 5000,
+            remainingTime: 90000,
             attendance: ""
         }
 
