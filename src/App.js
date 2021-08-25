@@ -51,15 +51,16 @@ function App() {
             <Route path="/admin/module-classes-attendance/:id" component={ViewModuleAttendence}></Route>
             <Route path="/admin/class-stuednts-attendance/:id" component={ViewModuleStudentAttendance}></Route>
 
+            <Route path="/admin/classes" component={ListClass}></Route>
+            <Route path="/admin/class-view-students/:id" component={ViewClassStudents}></Route>
+            <Route path="/admin/class-enroll-students/:id" component={EnrollStudents}></Route>
+
             <Route path="/lecturer/dashboard/:id" component={ViewDashboard} exact></Route>
             <Route path="/lecturer/predictedStudents/:id/:index" component={PredictedStudents}></Route>
 
-            {/* these routes may need change when do the component coding*/}
             <Route path="/admin/ListClassSchedule" component={ListClassSchedule}></Route>
             <Route path="/admin/add-class-schedule/:id" component={AddClassSchedule} ></Route>
-            <Route path="/admin/Class" component={ListClass}></Route>
             <Route path="/admin/student-leave-application" component={ListStudentsLeave}></Route>
-
 
             <Route path="/lecturer/schedules" component={ListTeachingSchedule}></Route>
             <Route path="/lecturer/qrcode/:id/:option" component={ViewClassQRCode}></Route>

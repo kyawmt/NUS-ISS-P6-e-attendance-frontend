@@ -7,6 +7,7 @@ const ModuleClasses_REST_API_URL = 'http://localhost:8080/api/admin/module-class
 const ClassStudents_REST_API_URL = 'http://localhost:8080/api/admin/module-classes-students';
 const ModuleClassInfo_REST_API_URL = 'http://localhost:8080/api/admin/module-classes-info';
 const Class_REST_API_URL = 'http://localhost:8080/api/admin/classes';
+const EnrollStudent_REST_API_URL='http://localhost:8080/api/admin/class-enroll-students';
 const ClassSchedule_REST_API_URL = "http://localhost:8080/api/admin/schedules";
 const AcademicPeriod_REST_API_URL = "http://localhost:8080/api/admin/academicPeriod";
 
@@ -114,6 +115,18 @@ class AdminService {
 
     deleteClass(classId) {
         return axiosInstance.delete(Class_REST_API_URL + "/" + classId);
+    }
+
+    getStudentsNotInClass(classId){
+        return axios.get(EnrollStudent_REST_API_URL+'/'+classId);
+    }
+
+    removeStudentsFromClass(classId,studentsId){
+        return axios.post(ClassStudents_REST_API_URL+'/'+ classId, studentsId)
+    }
+
+    enrollStudents(classId,studentsId){
+        return axios.post(EnrollStudent_REST_API_URL+'/'+ classId, studentsId)
     }
 
     addSchedules(schedule) {
