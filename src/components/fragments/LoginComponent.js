@@ -71,7 +71,7 @@ class LoginComponent extends Component {
                             </div>
                             <div className="form-group" style={{ marginTop: "10px" }}>
                                 <label>Password: </label>
-                                <input placeholder="Enter Password" name="password" className="form-control"
+                                <input type="password" placeholder="Enter Password" name="password" className="form-control"
                                     value={this.state.password} onChange={this.changePasswordHandlers} />
                             </div>
                             <button className="btn btn-success" onClick={this.login} style={{ marginTop: "10px", marginLeft: "180px" }}>Login</button>
