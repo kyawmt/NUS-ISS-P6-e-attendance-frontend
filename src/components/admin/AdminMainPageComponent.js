@@ -13,84 +13,78 @@ class AdminMainPageComponent extends Component {
         <div className="container">
           <div className="row align-items-center mt-4 d-inline-flex justify-content-center row-cols-3">
             <div className="col col-lg-3 d-inline-flex justify-content-center m-1 customMinWidth">
-              <div className="card white darken-1">
+              <div className="cardCustom white darken-1">
                 <a href={"./students"} className="v-align">
                   <img
                     src={Accounts}
                     alt="Accounts"
                     className="img-fluid"
-                    height="200"
-                    width="200"
+                    
                   />
                 </a>
               </div>
             </div>
 
             <div className="col col-lg-3 d-inline-flex justify-content-center m-1 customMinWidth">
-              <div className="card white darken-1">
+              <div className="cardCustom white darken-1">
                 <a href={"./ListModule"} className="v-align">
                   <img
                     src={Modules}
                     alt="Modules"
                     className="img-fluid"
-                    height="200"
-                    width="200"
+                    
                   />
                 </a>
               </div>
             </div>
 
             <div className="col col-lg-3 d-inline-flex justify-content-center m-1 customMinWidth">
-              <div className="card white darken-1">
+              <div className="cardCustom white darken-1">
                 <a href={"./ListClassSchedule"} className="v-align">
                   <img
                     src={ClassSchedule}
                     alt="ClassSchedule"
                     className="img-fluid"
-                    height="200"
-                    width="200"
+                    
                   />
                 </a>
               </div>
             </div>
 
             <div className="col col-lg-3 d-inline-flex justify-content-center m-1 customMinWidth">
-              <div className="card white darken-1">
+              <div className="cardCustom white darken-1">
                 <a href={"./classes"} className="v-align">
                   <img
                     src={Enrolments}
                     alt="Enrolments"
                     className="img-fluid"
-                    height="200"
-                    width="200"
+                    
                   />
                 </a>
               </div>
             </div>
 
             <div className="col col-lg-3 d-inline-flex justify-content-center m-1 customMinWidth">
-              <div className="card white darken-1">
+              <div className="cardCustom white darken-1">
                 <a href={"./module-attendance"} className="v-align">
                   <img
                     src={Attendance}
                     alt="Attendance"
                     className="img-fluid"
-                    height="200"
-                    width="200"
+                    
                   />
                 </a>
               </div>
             </div>
 
             <div className="col col-lg-3 d-inline-flex justify-content-center m-1 customMinWidth">
-              <div className="card white darken-1">
+              <div className="cardCustom white darken-1">
                 <a href={"./StudentLeaveApplication"} className="v-align">
                   <img
                     src={StudentLeaveApplication}
                     alt="StudentLeaveApplication"
                     className="img-fluid"
-                    height="200"
-                    width="200"
+                    
                   />
                 </a>
               </div>

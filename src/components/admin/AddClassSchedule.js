@@ -232,14 +232,14 @@ class AddClassSchedule extends Component {
                                     Fri
                                 </form>
                             </div>
-                            <div style={{ marginTop: "10px" }}>
+                            <div style={{ marginTop: "20px" , marginBottom: "20px" }}>
                                 <button className="btn btn-success" onClick={this.saveSchedule}>
                                     Save
                                 </button>
                                 <button
                                     className="btn btn-danger"
                                     onClick={this.cancel.bind(this)}
-                                    style={{ marginLeft: "10px" }}
+                                    style={{ marginLeft: "20px" , marginTop: "20px", marginBottom: "20px" }}
                                 >
                                     Cancel
                                 </button>

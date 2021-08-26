@@ -32,42 +32,39 @@ class LecturerMainPage extends Component {
         <div className="container">
           <div className="row align-items-center mt-4 d-flex justify-content-center row-cols-3">
             <div className="col col-lg-3 d-inline-flex justify-content-center m-1 customMinWidth">
-              <div className="card white darken-1">
+              <div className="cardCustom white darken-1">
                 <a href={"./schedules"} className="v-align">
                   <img
                     src={TeachingSchedule}
                     alt="TeachingSchedule"
                     className="img-fluid"
-                    height="200"
-                    width="200"
+                    
                   />
                 </a>
               </div>
             </div>
 
             <div className="col col-lg-3 d-inline-flex justify-content-center m-1 customMinWidth">
-              <div className="card white darken-1">
+              <div className="cardCustom white darken-1">
                 <a href={myLink} className="v-align">
                   <img
                     src={Attendance}
                     alt="Attendance"
                     className="img-fluid"
-                    height="200"
-                    width="200"
+                
                   />
                 </a>
               </div>
             </div>
 
             <div className="col col-lg-3 d-inline-flex justify-content-center m-1 customMinWidth">
-              <div className="card white darken-1">
+              <div className="cardCustom white darken-1">
                 <a href={dashboardLink} className="v-align">
                   <img
                     src={Dashboard}
                     alt="Dashboard"
                     className="img-fluid"
-                    height="200"
-                    width="200"
+
                   />
                 </a>
               </div>
