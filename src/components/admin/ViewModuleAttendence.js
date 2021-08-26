@@ -53,7 +53,7 @@ class ViewModuleAttendence extends Component {
                                     <td> {c.code} </td> 
                                     <td> {c.rate} </td>
                                     <td>
-                                        <button className="btn btn-outline-info" onClick={()=>this.viewClassDeatils(c.id)}>Deatils</button>
+                                        <button className="btn btn-outline-info" onClick={()=>this.viewClassDeatils(c.id)}>Details</button>
                                     </td>
                                 </tr>
                             )
