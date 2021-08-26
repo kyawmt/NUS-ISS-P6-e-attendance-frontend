@@ -125,7 +125,7 @@ class ViewModuleStudentAttendence extends Component {
                     pageLinkClassName={'page-link'}
                 />
 
-                <button className="btn btn-dark" onClick={this.back.bind(this)} >Back</button>
+                <button className="btn btn-dark" onClick={()=>this.back(this.state.classinfo.moduleid)} >Back</button>
 
             </div>
         );
