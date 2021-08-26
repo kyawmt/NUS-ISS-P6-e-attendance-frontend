@@ -122,10 +122,10 @@ class ListTeachingSchedule extends Component {
                                     <td> {schedule._class.size} </td>
                                     <td> {schedule.date} </td>
                                     <td>
-                                        <button className="btn btn-outline-info" onClick={()=>this.createQRCode(schedule.id, "signIn")}>Gen. QR Code</button>                                        
+                                        <button className="btn btn-outline-info" onClick={()=>this.createQRCode(schedule.id, "signIn")} style={{ backgroundColor: schedule.signInId ? '#605b66' : '' }}>Gen. QR Code</button>                                        
                                     </td>
                                     <td>
-                                        <button className="btn btn-outline-info" onClick={()=>this.createQRCode(schedule.id, "signOut")}>Gen. QR Code</button>                                        
+                                        <button className="btn btn-outline-info" onClick={()=>this.createQRCode(schedule.id, "signOut")} style={{ backgroundColor: schedule.signOutId ? '#605b66' : '' }}>Gen. QR Code</button>                                        
                                     </td>
                                 </tr>
                             )
