@@ -17,6 +17,7 @@ class Sidebar extends Component {
     }
 
     componentDidMount() {
+        
         LecturerService.getClassById().then(
             response => this.setState({
                 classes: response.data,

@@ -160,7 +160,7 @@ class FeaturesDashboard extends Component {
                                     <Tooltip />
                                     <Legend />
                                     <Bar dataKey="actualAttendanceRate" fill="#77DD77" />
-                                    <Bar dataKey="predictedAttendanceRate" fill="#78C7C7" />
+                                    {/* <Bar dataKey="predictedAttendanceRate" fill="#78C7C7" /> */}
                                 </BarChart>
                             </ResponsiveContainer>
                         </div>
