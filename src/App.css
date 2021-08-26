@@ -98,6 +98,11 @@ border-radius: 8px;
   cursor: pointer;
 }
 
+.logoutLink {
+  cursor: pointer;
+  font-weight: bold;
+}
+
 .btn-toolbar {
   width: 150px;
   height: 50px;

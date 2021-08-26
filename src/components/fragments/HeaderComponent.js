@@ -41,7 +41,7 @@ class HeaderComponent extends Component {
             )}
             {sessionStorage.getItem("token") && (
               <div onClick={this.logout}>
-                <h4>Logout</h4>
+                <h4 className="logoutLink">Logout</h4>
               </div>
             )}
           </nav>
