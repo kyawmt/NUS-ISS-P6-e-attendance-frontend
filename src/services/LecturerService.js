@@ -8,7 +8,7 @@ const LECTURER_REST_API_URL = 'http://localhost:8080/api/lecturer';
 class LecturerService{
 
     getSchedules() {
-        return axios.get(Lecturer_Schedules_REST_API_URL);
+        return axiosInstance.get(Lecturer_Schedules_REST_API_URL);
     }
 
     getLecturerTodaySchedule(){
@@ -45,25 +45,25 @@ class LecturerService{
     }
 
     getPresentStudentBySelecting(id){
-        return axios.get(LECTURER_REST_API_URL+'/class/schedules/attendance/present/'+id)
+        return axiosInstance.get(LECTURER_REST_API_URL+'/class/schedules/attendance/present/'+id)
     }
     getAbsentStudentBySelecting(id){
-        return axios.get(LECTURER_REST_API_URL+'/class/schedules/attendance/absent/'+id)
+        return axiosInstance.get(LECTURER_REST_API_URL+'/class/schedules/attendance/absent/'+id)
     }
     getOverviewFromSelection(id){
-        return axios.get(LECTURER_REST_API_URL+'/class/schedules/attendance/overview/'+id)
+        return axiosInstance.get(LECTURER_REST_API_URL+'/class/schedules/attendance/overview/'+id)
     }
 
     getListofSchedule(){
-        return axios.get(LECTURER_REST_API_URL+'/class/schedules')
+        return axiosInstance.get(LECTURER_REST_API_URL+'/class/schedules')
     }
 
     getNameandDate(id){
-        return axios.get(LECTURER_REST_API_URL+'/schedule'+id)
+        return axiosInstance.get(LECTURER_REST_API_URL+'/schedule/name/'+id)
     }
 
     getmaxID(){
-        return axios.get(LECTURER_REST_API_URL+'/maxschedule')
+        return axiosInstance.get(LECTURER_REST_API_URL+'/maxschedule')
     }
 
     getStudents(classId, index){

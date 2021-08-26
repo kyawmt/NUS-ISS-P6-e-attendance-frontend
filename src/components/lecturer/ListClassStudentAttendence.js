@@ -24,6 +24,7 @@ class ListClassStudentAttendance extends React.Component{
         }
         this.getOverviewFromSelection = this.getOverviewFromSelection.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.backhome = this.backhome.bind(this);
     }
     
 
@@ -69,6 +70,10 @@ class ListClassStudentAttendance extends React.Component{
 
     handleSubmit(event){
         this.props.history.push(`/lecturer/overview/`+this.state.value)
+    }
+
+    backhome(event){
+        this.props.history.push(`/lecturer/home`)
     }
 
    
@@ -215,7 +220,7 @@ class ListClassStudentAttendance extends React.Component{
 
                 </TabNav>
                 <button
-                className="btn btn-default"> Back </button>
+                className="btn btn-primary" onClick= {this.backhome}> Back </button>
 
             </div>            
             </div>
