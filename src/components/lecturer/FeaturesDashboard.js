@@ -16,6 +16,25 @@ class FeaturesDashboard extends Component {
         this.handleFail = this.handleFail.bind(this);
     }
 
+    componentDidMount() {
+
+        if(this.state.id != 0) {
+            LecturerService.getClassByClassId(this.state.id).then(
+                response => 
+                this.setState({
+                    class: response.data
+                })
+            );
+    
+            LecturerService.getAttendanceByClassId(this.state.id).then(
+                response => 
+                this.setState({
+                    attendance: response.data
+                })
+            ); 
+        }
+    }
+
     componentWillReceiveProps(nextProps) {
         this.setState({ id: nextProps.selectedClassId });  
 
@@ -32,6 +51,8 @@ class FeaturesDashboard extends Component {
                 attendance: response.data
             })
         );
+
+        console.log(this.state.attendance);
     }
 
     handlePass() {
@@ -109,7 +130,7 @@ class FeaturesDashboard extends Component {
                                         outerRadius={80}
                                         fill="#8884d8"
                                         dataKey="value"
-                                        isAnimationActive={false}
+                                        isAnimationActive={true}
                                     >
     
                                         {dataPie.map((entry, index) => (

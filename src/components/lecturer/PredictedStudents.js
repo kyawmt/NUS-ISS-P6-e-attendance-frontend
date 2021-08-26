@@ -37,7 +37,7 @@ class PredictedStudents extends Component {
 
     handleBack() {
         // this.props.history.goBack();
-        this.props.history.push(`/lecturer/dashboard/${0}`)
+        this.props.history.push(`/lecturer/dashboard/${this.state.id}`)
     }
 
     render() {
@@ -91,6 +91,14 @@ class PredictedStudents extends Component {
                     </div>
                 </div>
             );
+        } 
+        else if (sessionStorage.getItem("role") != "lecturer") {
+            return (
+                <div className="text-center">
+                    <h1>Predicted Result</h1>
+                    <h3>Please Log in</h3>
+                </div>
+            )
         } 
         else {
             return (

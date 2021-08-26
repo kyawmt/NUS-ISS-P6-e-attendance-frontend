@@ -28,8 +28,6 @@ class ListModule extends Component {
                 pages: Math.ceil(response.data.length/ this.state.perPage)
             })
         )
-
-        console.log(this.state.modules)
     }
 
     addModule() {
@@ -110,6 +108,14 @@ class ListModule extends Component {
                     />
                 </div>
             );
+        } 
+        else if (sessionStorage.getItem("role") != "admin") {
+            return (
+                <div className="text-center">
+                    <h1>Module</h1>
+                    <h3>Please Log in</h3>
+                </div>
+            )
         } 
         else {
             return (

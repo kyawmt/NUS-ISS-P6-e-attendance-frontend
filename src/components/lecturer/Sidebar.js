@@ -36,7 +36,7 @@ class Sidebar extends Component {
             let data = items.map(_class => {
                 return(
                     <div>
-                    <li className="classItem">
+                    <li className="classItem" key={_class.id}>
                         <button type="button" className="btn btn-secondary btn-sm" onClick={() => this.handleClick(_class.id)}>
                             {_class.year} {_class.semester} <br/> {_class.modulecode}
                         </button>
