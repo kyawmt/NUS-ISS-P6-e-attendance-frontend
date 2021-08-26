@@ -94,6 +94,10 @@ border-radius: 8px;
   align-items: stretch;
 }
 
+.homeBtn {
+  cursor: pointer;
+}
+
 .btn-toolbar {
   width: 150px;
   height: 50px;

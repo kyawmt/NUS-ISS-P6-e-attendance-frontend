@@ -30,7 +30,7 @@ class HeaderComponent extends Component {
         <header>
           <nav className="navbar navbar-dark header-navbar h-auto">
             <div onClick={this.mainpage}>
-              <a className="navbar-brand">
+              <a className="navbar-brand homeBtn">
                 <img src={logo} alt="logo" height="60" />
               </a>
             </div>
@@ -41,7 +41,7 @@ class HeaderComponent extends Component {
             )}
             {sessionStorage.getItem("token") && (
               <div onClick={this.logout}>
-                <h4>logout</h4>
+                <h4>Logout</h4>
               </div>
             )}
           </nav>
