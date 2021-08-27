@@ -27,6 +27,7 @@ import ViewClassQRCode from './components/lecturer/ViewClassQRCode';
 import ListClassStudentAttendance from './components/lecturer/ListClassStudentAttendence';
 import ViewClassStudents from './components/admin/ViewClassStudents';
 import EnrollStudents from './components/admin/EnrollStudents';
+import GetAdminToAddModule from './components/lecturer/GetAdminToAddModule';
 
 function App() {
 
@@ -68,7 +69,9 @@ function App() {
 
             <Route path="/lecturer/schedules" component={role=="lecturer"?ListTeachingSchedule:LoginComponent}></Route>
             <Route path="/lecturer/qrcode/:id/:option" component={role=="lecturer"?ViewClassQRCode:LoginComponent}></Route>
+            <Route path="/lecturer/overview/0" component={role=="lecturer"?GetAdminToAddModule:LoginComponent}></Route>
             <Route path="/lecturer/overview/:id" component={role=="lecturer"?ListClassStudentAttendance:LoginComponent}></Route>
+            
 
           </Switch>
         </div>
