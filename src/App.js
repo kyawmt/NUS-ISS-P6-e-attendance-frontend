@@ -51,7 +51,7 @@ function App() {
             <Route path="/admin/add-Module/:id" component={AddOrUpdateModule}></Route>
             <Route path="/admin/module-attendance" component={ListModuleAttendence}></Route>
             <Route path="/admin/module-classes-attendance/:id" component={ViewModuleAttendence}></Route>
-            <Route path="/admin/class-stuednts-attendance/:id" component={ViewModuleStudentAttendance}></Route>
+            <Route path="/admin/class-students-attendance/:id" component={ViewModuleStudentAttendance}></Route>
 
             <Route path="/admin/classes" component={ListClass}></Route>
             <Route path="/admin/class-view-students/:id" component={ViewClassStudents}></Route>
