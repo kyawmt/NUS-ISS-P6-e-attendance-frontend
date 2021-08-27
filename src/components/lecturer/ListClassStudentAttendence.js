@@ -127,7 +127,7 @@ class ListClassStudentAttendance extends React.Component{
         
                 <select value = {this.state.value} onChange={this.handleChange}> <option> Please select a schedule </option>
                             {this.state.schedules.map(s => <option value = {s.id}>
-                         {s._class.module.name} {s.date}
+                         {s._class.module.code} {s._class.module.name} {s.date}
                         </option>)}
                         </select >                    
                         <input type="submit" value = "Submit"/> 
