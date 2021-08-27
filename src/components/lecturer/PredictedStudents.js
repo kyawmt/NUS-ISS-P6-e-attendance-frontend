@@ -51,7 +51,7 @@ class PredictedStudents extends Component {
                         <td>{student.studentId}</td>
                         <td>{student.firstname}</td>
                         <td>{student.lastname}</td>
-                        <td>{student.attendancerate}</td>
+                        <td>{student.attendancerate}%</td>
                     </tr>
                 )  
             })
@@ -65,7 +65,7 @@ class PredictedStudents extends Component {
                                 <th>Student Id</th>
                                 <th>First Name</th>
                                 <th>Last Name</th>
-                                <th>Attendance Rate</th>
+                                <th>Avg Attendance Rate</th>
                             </tr>
                         </thead>
                         <tbody>
