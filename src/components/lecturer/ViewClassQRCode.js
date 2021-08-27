@@ -20,6 +20,11 @@ class ViewClassQRCode extends Component {
         }
 
         this.getAttendance = this.getAttendance.bind(this);
+        this.back = this.back.bind(this);
+    }
+
+    back() {
+        this.props.history.push(`/lecturer/schedules`);
     }
 
     getAttendance(){
@@ -93,9 +98,10 @@ class ViewClassQRCode extends Component {
                     Module Name: {this.state.ModuleName} <br/>
                     Date: {this.state.Date} <br/>   
 
-                    <Countdown date={Date.now() + this.state.remainingTime} renderer={renderer}/><br/>  
-                                                                                                                                                             
-                                 
+                    <Countdown date={Date.now() + this.state.remainingTime} renderer={renderer}/><br/> 
+
+                    <button className="btn btn-dark" onClick={()=>this.back()} >Back</button>
+                                                                                                                                                                          
                 </div>
 
                 

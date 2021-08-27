@@ -19,6 +19,11 @@ class ListTeachingSchedule extends Component {
         this.handleEndDateChange = this.handleEndDateChange.bind(this);
         this.filterSchedule = this.filterSchedule.bind(this);
         
+        this.back = this.back.bind(this);
+    }
+
+    back() {
+        this.props.history.push(`/lecturer/home`);
     }
 
     handleStartDateChange(date){
@@ -92,14 +97,7 @@ class ListTeachingSchedule extends Component {
                             </td>
                         </tr>
                     </tbody>
-                </table>
-
-                
-
-                
-                
-                
-
+                </table>                     
                 
                 <table className="table table-hover ">
                     <thead>
@@ -132,6 +130,9 @@ class ListTeachingSchedule extends Component {
                         }
                     </tbody>
                 </table>
+
+                <button className="btn btn-dark" onClick={()=>this.back()} >Back</button>
+
             </div>
         );
     }
