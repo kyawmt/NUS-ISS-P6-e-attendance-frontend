@@ -22,11 +22,16 @@ class ListTeachingSchedule extends Component {
         this.handleEndDateChange = this.handleEndDateChange.bind(this);
         this.filterSchedule = this.filterSchedule.bind(this);
         
-        this.back = this.back.bind(this);
+        this.back = this.back.bind(this);        
     }
 
     back() {
         this.props.history.push(`/lecturer/home`);
+    }
+
+    handlePageClick = (event) => {
+        let page = event.selected;
+        this.setState({page})
     }
 
     handleStartDateChange(date){
