@@ -25,7 +25,7 @@ class ViewModuleAttendence extends Component {
     }
 
     viewClassDeatils(id){
-        this.props.history.push(`/admin/class-stuednts-attendance/${id}`);
+        this.props.history.push(`/admin/class-students-attendance/${id}`);
     }
     
     render() {
