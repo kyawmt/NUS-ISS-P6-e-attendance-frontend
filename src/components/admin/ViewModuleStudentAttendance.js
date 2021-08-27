@@ -49,7 +49,7 @@ class ViewModuleStudentAttendence extends Component {
         let studentId=event.target.value;
         AdminService.sendEmail(studentId, this.state.classinfo.code).then(
             res => {
-                event.target.innerHTML='reminder mail send';
+                event.target.innerHTML='mail sent';
             }
         )
     }
