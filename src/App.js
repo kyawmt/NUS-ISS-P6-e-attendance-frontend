@@ -30,6 +30,8 @@ import EnrollStudents from './components/admin/EnrollStudents';
 
 function App() {
 
+  const role=sessionStorage.getItem("role");
+
   return (
     <div className="page-container">
       <Router>
@@ -37,36 +39,36 @@ function App() {
         <div className="container">
           <Switch>
             <Route path="/" exact component={HomeComponent}></Route>
-            <Route path="/admin/home" component={AdminMainPageComponent}></Route>
-            <Route path="/lecturer/home" component={LecturerMainPage}></Route>
+            <Route path="/admin/home" component={role=="admin"? AdminMainPageComponent:LoginComponent}></Route>
+            <Route path="/lecturer/home" component={role=="lecturer"? LecturerMainPage:LoginComponent}></Route>
             <Route path="/login" component={LoginComponent}></Route>
 
-            <Route path="/admin/lecturers" component={ListLecturer}></Route>
-            <Route path="/admin/add-lecturer/:id" component={AddOrUpdateLecturer}></Route>
-            <Route path="/admin/students" component={ListStudent}></Route>
-            <Route path="/admin/add-student/:id" component={AddOrUpdateStudent}></Route>
-            <Route path="/admin/add-student-photo/:id" component={AddStudentPhoto}></Route>
+            <Route path="/admin/lecturers" component={role=="admin"? ListLecturer:LoginComponent}></Route>
+            <Route path="/admin/add-lecturer/:id" component={role=="admin"? AddOrUpdateLecturer:LoginComponent}></Route>
+            <Route path="/admin/students" component={role=="admin"? ListStudent:LoginComponent}></Route>
+            <Route path="/admin/add-student/:id" component={role=="admin"? AddOrUpdateStudent:LoginComponent}></Route>
+            <Route path="/admin/add-student-photo/:id" component={role=="admin"? AddStudentPhoto:LoginComponent}></Route>
 
-            <Route path="/admin/ListModule" component={ListModule}></Route>
-            <Route path="/admin/add-Module/:id" component={AddOrUpdateModule}></Route>
-            <Route path="/admin/module-attendance" component={ListModuleAttendence}></Route>
-            <Route path="/admin/module-classes-attendance/:id" component={ViewModuleAttendence}></Route>
-            <Route path="/admin/class-students-attendance/:id" component={ViewModuleStudentAttendance}></Route>
+            <Route path="/admin/ListModule" component={role=="admin"? ListModule:LoginComponent}></Route>
+            <Route path="/admin/add-Module/:id" component={role=="admin"? AddOrUpdateModule:LoginComponent}></Route>
+            <Route path="/admin/module-attendance" component={role=="admin"? ListModuleAttendence:LoginComponent}></Route>
+            <Route path="/admin/module-classes-attendance/:id" component={role=="admin"? ViewModuleAttendence:LoginComponent}></Route>
+            <Route path="/admin/class-students-attendance/:id" component={role=="admin"? ViewModuleStudentAttendance:LoginComponent}></Route>
 
-            <Route path="/admin/classes" component={ListClass}></Route>
-            <Route path="/admin/class-view-students/:id" component={ViewClassStudents}></Route>
-            <Route path="/admin/class-enroll-students/:id" component={EnrollStudents}></Route>
+            <Route path="/admin/classes" component={role=="admin"? ListClass:LoginComponent}></Route>
+            <Route path="/admin/class-view-students/:id" component={role=="admin"? ViewClassStudents:LoginComponent}></Route>
+            <Route path="/admin/class-enroll-students/:id" component={role=="admin"? EnrollStudents:LoginComponent}></Route>
 
-            <Route path="/lecturer/dashboard/:id" component={ViewDashboard} exact></Route>
-            <Route path="/lecturer/predictedStudents/:id/:index" component={PredictedStudents}></Route>
+            <Route path="/lecturer/dashboard/:id" component={role=="lecturer"? ViewDashboard:LoginComponent} exact></Route>
+            <Route path="/lecturer/predictedStudents/:id/:index" component={role=="lecturer"?PredictedStudents:LoginComponent}></Route>
 
-            <Route path="/admin/ListClassSchedule" component={ListClassSchedule}></Route>
-            <Route path="/admin/add-class-schedule/:id" component={AddClassSchedule} ></Route>
-            <Route path="/admin/student-leave-application" component={ListStudentsLeave}></Route>
+            <Route path="/admin/ListClassSchedule" component={role=="admin"?ListClassSchedule:LoginComponent}></Route>
+            <Route path="/admin/add-class-schedule/:id" component={role=="admin"?AddClassSchedule:LoginComponent} ></Route>
+            <Route path="/admin/student-leave-application" component={role=="admin"?ListStudentsLeave:LoginComponent}></Route>
 
-            <Route path="/lecturer/schedules" component={ListTeachingSchedule}></Route>
-            <Route path="/lecturer/qrcode/:id/:option" component={ViewClassQRCode}></Route>
-            <Route path="/lecturer/overview/:id" component={ListClassStudentAttendance}></Route>
+            <Route path="/lecturer/schedules" component={role=="lecturer"?ListTeachingSchedule:LoginComponent}></Route>
+            <Route path="/lecturer/qrcode/:id/:option" component={role=="lecturer"?ViewClassQRCode:LoginComponent}></Route>
+            <Route path="/lecturer/overview/:id" component={role=="lecturer"?ListClassStudentAttendance:LoginComponent}></Route>
 
           </Switch>
         </div>

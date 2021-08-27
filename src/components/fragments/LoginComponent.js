@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ParticleBackground from './ParticleBackground';
-import axios from 'axios';
+import axiosInstance from '../../services/axiosInstance';
 
 class LoginComponent extends Component {
 
@@ -12,7 +12,6 @@ class LoginComponent extends Component {
             password: ''
         }
     }
-
 
     changeUserNameHandlers = (event) => {
         this.setState({ username: event.target.value });
@@ -30,7 +29,7 @@ class LoginComponent extends Component {
 
         console.log('user=> ' + JSON.stringify(user));
 
-        axios.post("http://localhost:8080/token", user).then(res => {
+        axiosInstance.post("/token", user).then(res => {
             let token = res.headers.jwttoken;
             let fullname = res.headers.fullname;
             let role = res.headers.role;

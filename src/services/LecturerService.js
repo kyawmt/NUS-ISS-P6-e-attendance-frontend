@@ -1,9 +1,8 @@
-import axios from "axios";
 import axiosInstance from "./axiosInstance";
 
-const Lecturer_Schedules_REST_API_URL='http://localhost:8080/api/lecturer/schedules';
-const Class_REST_API_URL='http://localhost:8080/api/lecturer';
-const LECTURER_REST_API_URL = 'http://localhost:8080/api/lecturer';
+const Lecturer_Schedules_REST_API_URL='/api/lecturer/schedules';
+const Class_REST_API_URL='/api/lecturer';
+const LECTURER_REST_API_URL = '/api/lecturer';
 
 class LecturerService{
 

@@ -1,18 +1,19 @@
-import axios from 'axios' 
+import axios from 'axios'
 
-let axiosInstance = axios.create()
+const axiosInstance = axios.create({
+  baseURL: "http://localhost:8080"
+})
 
-axiosInstance.interceptors.request.use(
-  config => {
-    const token = sessionStorage.getItem('token')
+axiosInstance.interceptors.request.use(config => {
+  const { url } = config;
+  const token = sessionStorage.getItem('token')
+
+  if (!url.startsWith('/token')) {
     if (token) {
       config.headers.JwtToken = token
     }
-    return config
-  },
-  err => {
-    return Promise.reject(err)
   }
-)
+  return config
+})
 
 export default axiosInstance

@@ -30,7 +30,7 @@ class HomeComponent extends Component {
                 </div>
                 <div className="row align-items-center pl-4">
                     <div className="col d-flex justify-content-center custom-col">
-                    <a href={"./login"} component={LoginComponent} className="no-underline">
+                    <a href={"/login"} component={LoginComponent} className="no-underline">
                     <button className="btn btn-toolbar justify-content-center" type="button">Login</button></a>
                     </div>
                 

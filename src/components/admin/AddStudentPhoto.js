@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from "axios";
 import AdminService from '../../services/AdminService';
+import axiosInstance from '../../services/axiosInstance';
 
 class AddStudentPhoto extends Component {
 
@@ -57,11 +57,10 @@ class AddStudentPhoto extends Component {
             data.append("photo", this.state.photo);
             data.append("id", this.state.id);
 
-            axios({
+            axiosInstance({
                 method: "POST",
-                url: "http://localhost:8080/api/admin/studentphoto",
+                url: "/api/admin/studentphoto",
                 headers: { "Content-Type": "multipart/form-data", },
-                headers: { "JwtToken": sessionStorage.getItem("token") },
                 data
             }).then((res) => {
                 this.setState({ photoError: res.data })

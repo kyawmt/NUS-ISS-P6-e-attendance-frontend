@@ -1,16 +1,16 @@
 import axiosInstance from "./axiosInstance";
 
-const Lecturer_REST_API_URL = 'http://localhost:8080/api/admin/lecturers';
-const Student_REST_API_URL = 'http://localhost:8080/api/admin/students';
-const Module_REST_API_URL = 'http://localhost:8080/api/admin/modules';
-const ModuleClasses_REST_API_URL = 'http://localhost:8080/api/admin/module-classes';
-const ClassStudents_REST_API_URL = 'http://localhost:8080/api/admin/module-classes-students';
-const ModuleClassInfo_REST_API_URL = 'http://localhost:8080/api/admin/module-classes-info';
-const Class_REST_API_URL = 'http://localhost:8080/api/admin/classes';
-const EnrollStudent_REST_API_URL = 'http://localhost:8080/api/admin/class-enroll-students';
-const ClassSchedule_REST_API_URL = "http://localhost:8080/api/admin/schedules";
-const AcademicPeriod_REST_API_URL = "http://localhost:8080/api/admin/academicPeriod";
-const EMAIL_REST_API_URL = "http://localhost:8080/api/admin/email"
+const Lecturer_REST_API_URL = '/api/admin/lecturers';
+const Student_REST_API_URL = '/api/admin/students';
+const Module_REST_API_URL = '/api/admin/modules';
+const ModuleClasses_REST_API_URL = '/api/admin/module-classes';
+const ClassStudents_REST_API_URL = '/api/admin/module-classes-students';
+const ModuleClassInfo_REST_API_URL = '/api/admin/module-classes-info';
+const Class_REST_API_URL = '/api/admin/classes';
+const EnrollStudent_REST_API_URL = '/api/admin/class-enroll-students';
+const ClassSchedule_REST_API_URL = "/api/admin/schedules";
+const AcademicPeriod_REST_API_URL = "/api/admin/academicPeriod";
+const EMAIL_REST_API_URL = "/api/admin/email"
 
 class AdminService {
 
