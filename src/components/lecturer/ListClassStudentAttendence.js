@@ -25,6 +25,7 @@ class ListClassStudentAttendance extends React.Component{
         this.getOverviewFromSelection = this.getOverviewFromSelection.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.backhome = this.backhome.bind(this);
+        this.viewLOA = this.viewLOA.bind(this);
     }
     
 
@@ -74,6 +75,10 @@ class ListClassStudentAttendance extends React.Component{
 
     backhome(event){
         this.props.history.push(`/lecturer/home`)
+    }
+
+    viewLOA(event){
+        this.props.history.push(`/lecturer/viewLOA`)
     }
 
    
@@ -227,7 +232,7 @@ class ListClassStudentAttendance extends React.Component{
                                     <td>{absents.studentId}</td>
                                     <td>{absents.firstName} {absents.lastName}</td>
                                     <td>{absents.userName}@u.nus.edu</td>
-                                    <td> <button className="btn btn-primary"> View LOA </button></td>
+                                    <td> <button className="btn btn-primary" onClick = {this.viewLOA}> View LOA </button></td>
                                 </tr>
                             )
                         }
