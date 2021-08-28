@@ -3,6 +3,7 @@ import TabNav from './TabNav';
 import Tab from "./Tab";
 import LecturerService from '../../services/LecturerService';
 import {Pie} from 'react-chartjs-2';
+import ReactPaginate from 'react-paginate';
 
 
 
@@ -19,7 +20,10 @@ class ListClassStudentAttendance extends React.Component{
             value : 0,
             names: [],
             date:"",
-            moduleName:""
+            moduleName:"",
+            perPage: 3,
+            page: 0,
+            pages: 0
             
         }
         this.getOverviewFromSelection = this.getOverviewFromSelection.bind(this);
@@ -35,13 +39,16 @@ class ListClassStudentAttendance extends React.Component{
         const {id} = this.props.match.params;
 
         LecturerService.getAbsentStudentBySelecting(id).then((response)=>{
-            this.setState({absent: response.data})
+            this.setState({absent: response.data,
+                pages: Math.ceil(response.data.length/ this.state.perPage)
+            })
         });
         LecturerService.getListofSchedule().then((response)=>{
             this.setState({schedules:response.data})
         });
         LecturerService.getPresentStudentBySelecting(id).then((response)=>{
-            this.setState({present:response.data})
+            this.setState({present:response.data,
+                pages: Math.ceil(response.data.length/ this.state.perPage)})
         });
 
         LecturerService.getOverviewFromSelection(id).then((response) =>{
@@ -206,7 +213,21 @@ class ListClassStudentAttendance extends React.Component{
                             )
                         }
                     </tbody>
-                </table>
+                </table>                
+                <ReactPaginate
+                            previousLabel={'previous'}
+                            nextLabel={'next'}
+                            pageCount={this.state.pages}
+                            marginPagesDisplayed={2}
+                            pageRangeDisplayed={5}
+                            onPageChange={this.handlePageClick}
+                            containerClassName={'pagination'}
+                            activeClassName={'active'}
+                            previousLinkClassName={'page-link'}
+                            nextLinkClassName={'page-link'}
+                            pageClassName={'page-item'}
+                            pageLinkClassName={'page-link'}
+                    />
 
                     </Tab>
                     <Tab isSelected={this.state.selected === 'Absent'}>
@@ -238,8 +259,21 @@ class ListClassStudentAttendance extends React.Component{
                         }
                     </tbody>
                 </table>
-
                 
+                <ReactPaginate
+                            previousLabel={'previous'}
+                            nextLabel={'next'}
+                            pageCount={this.state.pages}
+                            marginPagesDisplayed={2}
+                            pageRangeDisplayed={5}
+                            onPageChange={this.handlePageClick}
+                            containerClassName={'pagination'}
+                            activeClassName={'active'}
+                            previousLinkClassName={'page-link'}
+                            nextLinkClassName={'page-link'}
+                            pageClassName={'page-item'}
+                            pageLinkClassName={'page-link'}
+                    />              
 
                     </Tab>
       
