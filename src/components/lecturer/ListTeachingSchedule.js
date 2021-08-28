@@ -172,11 +172,50 @@ class ListTeachingSchedule extends Component {
         }else{
 
             return (
-                <div className="text-center">
-                    <h1>Teaching Schedule</h1>
-                    <h3>No Schedule currently</h3>
+                <div>
+                    <h1 className="text-left">Teaching Schedule</h1>
+                    <h3>No Schedule currently</h3>                    
+                    <br></br>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Start Date: 
+                                </td>
+                                <td>
+                                <DatePicker
+                                    selected={ this.state.startDate }
+                                    onChange={ this.handleStartDateChange }
+                                    name="startDate"
+                                    dateFormat="dd/MM/yyyy"
+                                />
+                                </td>
 
-                    <button className="btn btn-dark" onClick={()=>this.back()} >Back</button>
+                                <td>
+                                    End Date: 
+                                </td>
+                            
+                                <td>
+                                                    
+                                <DatePicker
+                                    selected={ this.state.endDate }
+                                    onChange={ this.handleEndDateChange }
+                                    name="endDate"
+                                    dateFormat="dd/MM/yyyy"
+                                />
+                                </td>
+                                <td>
+                                    <button className="btn btn-primary" onClick={ this.filterSchedule }>Filter</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table> 
+
+                    <div class="text-left">
+                        <button className="btn btn-dark" onClick={()=>this.back()} >Back</button>
+                    </div>
+
+                    
                     
                 </div>
             )
