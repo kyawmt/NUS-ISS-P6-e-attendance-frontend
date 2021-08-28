@@ -23,7 +23,10 @@ class ListClassStudentAttendance extends React.Component{
             moduleName:"",
             perPage: 3,
             page: 0,
-            pages: 0
+            pages: 0,
+            perPage1: 3,
+            page1 :0,
+            pages1:0
             
         }
         this.getOverviewFromSelection = this.getOverviewFromSelection.bind(this);
@@ -40,7 +43,7 @@ class ListClassStudentAttendance extends React.Component{
 
         LecturerService.getAbsentStudentBySelecting(id).then((response)=>{
             this.setState({absent: response.data,
-                pages: Math.ceil(response.data.length/ this.state.perPage)
+                pages1: Math.ceil(response.data.length/ this.state.perPage1)
             })
         });
         LecturerService.getListofSchedule().then((response)=>{
@@ -88,6 +91,16 @@ class ListClassStudentAttendance extends React.Component{
         this.props.history.push(`/lecturer/viewLOA`)
     }
 
+    handlePageClick = (event) => {
+        let page = event.selected;
+        this.setState({page})
+    }
+    handlePageClick1 = (event) => {
+        let page1 = event.selected;
+        this.setState({page1})
+    }
+
+
    
 
     
@@ -107,7 +120,7 @@ class ListClassStudentAttendance extends React.Component{
         const absentwithreason = this.state.overview.AbsentwithvalidReason;
         const absentwovalidreason = this.state.overview.AbsentwithoutvalidReason;
         const absentee =this.state.overview.AbsentwithoutvalidReason+this.state.overview.AbsentwithvalidReason;
-        const present = this.state.overview.Present;
+        const presentee = this.state.overview.Present;
 
         const date = this.state.names.scheduleDate;
         const name = this.state.names.moduleName;    
@@ -126,10 +139,39 @@ class ListClassStudentAttendance extends React.Component{
                 '#4B5000',
                 '#175000'
                 ],
-                data: [absentwithreason,absentwovalidreason,present]
+                data: [absentwithreason,absentwovalidreason,presentee]
               }
             ]
         }
+        const {page, perPage, pages, present} = this.state;
+        let items = present.slice(page * perPage, (page + 1) * perPage);
+        let data1 = items.map( presents => {
+            return (
+                    <tr key={presents.id}>
+                        <td>{presents.id}</td>
+                        <td>{presents.studentId}</td>
+                        <td>{presents.firstName} {presents.lastName}</td>
+                        <td>{presents.userName}@u.nus.edu</td>
+                    </tr>
+                )  
+            })
+        
+        const {page1, perPage1, pages1, absent} = this.state;
+        let items1 = absent.slice(page1 * perPage1, (page1 + 1) * perPage1);
+        let data2 = items1.map( absents =>{
+            return(
+            <tr key = {absents.id}>
+                <td>{absents.id}</td>
+                <td>{absents.studentId}</td>
+                <td>{absents.firstName} {absents.lastName}</td>
+                <td>{absents.userName}@u.nus.edu</td>
+                <td> <button className="btn btn-primary" onClick = {this.viewLOA}> View LOA </button></td>
+            </tr>
+               )
+            })   
+        
+
+
 
         if (noofenrolment === 0){
             return (
@@ -191,7 +233,7 @@ class ListClassStudentAttendance extends React.Component{
                         <p> </p>
                         <h2> Present Students </h2>
                         <p> </p>
-                    <table className = "table table-striped">
+                    <table className = "table table-hover">
                     <thead>
                         <tr>
                             <td> S/No </td>
@@ -201,17 +243,7 @@ class ListClassStudentAttendance extends React.Component{
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            this.state.present.map(
-                                presents =>
-                                <tr key = {presents.id}>
-                                    <td>{presents.id}</td>
-                                    <td>{presents.studentId}</td>
-                                    <td>{presents.firstName} {presents.lastName}</td>
-                                    <td>{presents.userName}@u.nus.edu</td>
-                                </tr>
-                            )
-                        }
+                        {data1}
                     </tbody>
                 </table>                
                 <ReactPaginate
@@ -234,7 +266,7 @@ class ListClassStudentAttendance extends React.Component{
                     <p> </p>
                         <h2> Absent Students </h2>
                         <p> </p>
-                    <table className = "table table-striped">
+                    <table className = "table table-hover">
                     <thead>
                         <tr>
                             <td> S/No </td>
@@ -245,28 +277,17 @@ class ListClassStudentAttendance extends React.Component{
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            this.state.absent.map(
-                                absents =>
-                                <tr key = {absents.id}>
-                                    <td>{absents.id}</td>
-                                    <td>{absents.studentId}</td>
-                                    <td>{absents.firstName} {absents.lastName}</td>
-                                    <td>{absents.userName}@u.nus.edu</td>
-                                    <td> <button className="btn btn-primary" onClick = {this.viewLOA}> View LOA </button></td>
-                                </tr>
-                            )
-                        }
+                        {data2}
                     </tbody>
                 </table>
                 
                 <ReactPaginate
                             previousLabel={'previous'}
                             nextLabel={'next'}
-                            pageCount={this.state.pages}
+                            pageCount={this.state.pages1}
                             marginPagesDisplayed={2}
                             pageRangeDisplayed={5}
-                            onPageChange={this.handlePageClick}
+                            onPageChange={this.handlePageClick1}
                             containerClassName={'pagination'}
                             activeClassName={'active'}
                             previousLinkClassName={'page-link'}
