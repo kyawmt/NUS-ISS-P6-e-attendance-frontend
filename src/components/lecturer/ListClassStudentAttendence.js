@@ -90,6 +90,8 @@ class ListClassStudentAttendance extends React.Component{
             {name: 'Absent With Valid Reason', value: this.state.overview.AbsentwithvalidReason}
         ];
 
+        const noofenrolment = this.state.overview.totalSize;
+
         const absentwithreason = this.state.overview.AbsentwithvalidReason;
         const absentwovalidreason = this.state.overview.AbsentwithoutvalidReason;
         const absentee =this.state.overview.AbsentwithoutvalidReason+this.state.overview.AbsentwithvalidReason;
@@ -116,12 +118,31 @@ class ListClassStudentAttendance extends React.Component{
               }
             ]
         }
+
+        if (noofenrolment === 0){
+            return (
+
+                <div>               
+                <form onSubmit = {this.handleSubmit}>
         
+                <select value = {this.state.value} onChange={this.handleChange}> <option> Please select a schedule </option>
+                            {this.state.schedules.map(s => <option value = {s.id}>
+                         {s._class.module.code} {s._class.module.name} {s.date}
+                        </option>)}
+                        </select >                    
+                        <input type="submit" value = "Submit"/> 
+                        </form>    
+
+                
+                
+                <div> No students found! Are you sure there are students being enrolled?</div>
+
+                </div>
+            )
+        }       
 
         return (
-            <div> 
-                <p> The attendance rate for {name} on {date} </p> 
-               
+            <div>               
                 
                 <form onSubmit = {this.handleSubmit}>
         
@@ -222,7 +243,8 @@ class ListClassStudentAttendance extends React.Component{
                 <button
                 className="btn btn-primary" onClick= {this.backhome}> Back </button>
 
-            </div>            
+            </div>   
+            
             </div>
         );
     }
