@@ -196,7 +196,9 @@ class ListClassStudentAttendance extends React.Component{
         }       
 
         return (
-            <div>               
+            <div>
+                <p> Current Module Selected: {name}</p>  
+                <p> Current Date Selected: {date} </p>      
                 
                 <form onSubmit = {this.handleSubmit}>
         
