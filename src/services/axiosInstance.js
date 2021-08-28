@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:8080"
+  baseURL: "https://sa52-e-attendance-backend.herokuapp.com"
 })
 
 axiosInstance.interceptors.request.use(config => {
