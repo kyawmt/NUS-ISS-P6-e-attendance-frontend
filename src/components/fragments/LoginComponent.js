@@ -9,7 +9,8 @@ class LoginComponent extends Component {
 
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            loginError: ''
         }
     }
 
@@ -46,6 +47,7 @@ class LoginComponent extends Component {
                     window.location.href = "/lecturer/home";
                     break;
                 default:
+                    this.setState({ loginError: "Wrong username or password, Please login again." });
                     break;
             }
         }
@@ -73,6 +75,7 @@ class LoginComponent extends Component {
                                 <input type="password" placeholder="Enter Password" name="password" className="form-control"
                                     value={this.state.password} onChange={this.changePasswordHandlers} />
                             </div>
+                            <div style={{ fontSize: 10, color: "red" }}>{this.state.loginError}</div>
                             <button className="btn btn-success" onClick={this.login} style={{ marginTop: "10px", marginLeft: "180px" }}>Login</button>
                         </form>
                     </div>
