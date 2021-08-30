@@ -229,3 +229,7 @@ border-radius: 8px;
   display: flex;
   justify-content: center
 }
+
+.loginBtn{
+  margin-left: 90px;
+}
