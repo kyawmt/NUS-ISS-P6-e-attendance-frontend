@@ -77,7 +77,7 @@ class LoginComponent extends Component {
                             </div>
                             <div style={{ fontSize: 10, color: "red" }}>{this.state.loginError}</div>
                             <div className="loginBtn">
-                            <button className="btn btn-success" onClick={this.login} style={{ marginTop: "10px", marginLeft: "180px" }}>Login</button>
+                            <button className="btn btn-success" onClick={this.login} style={{ marginTop: "10px"}}>Login</button>
                             </div>
                         </form>
                     </div>
