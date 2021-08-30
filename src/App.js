@@ -28,7 +28,7 @@ import ListClassStudentAttendance from './components/lecturer/ListClassStudentAt
 import ViewClassStudents from './components/admin/ViewClassStudents';
 import EnrollStudents from './components/admin/EnrollStudents';
 import GetAdminToAddModule from './components/lecturer/GetAdminToAddModule';
-import ViewLOA from './components/lecturer/ViewAttendenceRatePrediction copy';
+import ViewLOA from './components/lecturer/ViewLOA';
 
 function App() {
 
